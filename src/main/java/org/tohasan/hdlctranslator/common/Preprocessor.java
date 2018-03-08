@@ -30,4 +30,26 @@ public class Preprocessor {
         return data;
     }
 
+    public static int hexToInt(StringBuffer hexval) {
+        int var3 = 0;
+
+        for (int i = 0; i < hexval.length(); ++i) {
+            var3 <<= 4;
+            char currentCharacter;
+            if ((currentCharacter = hexval.charAt(i)) >= 48 && currentCharacter <= 57) {
+                var3 += currentCharacter - 48;
+            } else if (currentCharacter >= 65 && currentCharacter <= 70) {
+                var3 += currentCharacter - 65 + 10;
+            } else {
+                if (currentCharacter < 97 || currentCharacter > 102) {
+                    System.out.println("hexToInt: illegal character");
+                }
+
+                var3 += currentCharacter - 97 + 10;
+            }
+        }
+
+        return var3;
+    }
+
 }
