@@ -63,26 +63,26 @@ FD (Frame Delimiter - <разделитель кадров>) – 1 байт, в�
  *******************************************************************************************************************/
 
     // Start flag delimiter (флаг начала последовательности - FD)
-    private Byte startDelimiter;
+    private byte startDelimiter;
     // Frame format (определение формата кадра - FF)
-    private Byte[] frameFormat;
+    private byte[] frameFormat = new byte[2];
     // -- AddressField - адресное поле
     // ClientAddress (адрес клиента)
-    private Byte clientAddress;
+    private byte clientAddress;
     // -- ServerAddress - адрес сервера
     // upper part - logical device address (логический адрес устройства)
-    private Byte[] logicalDeviceAddress;
+    private byte[] logicalDeviceAddress;
     // lower part - physical device address (физический адрес устройства)
-    private Byte[] physicalDeviceAddress;
+    private byte[] physicalDeviceAddress;
     // Control Field (управляющее поле - CF)
-    private Byte controlField;
+    private byte controlField;
     // Header Check Sequence (код целостности заголовка - HCS)
-    private Byte[] headerCheckSequence;
+    private byte[] headerCheckSequence;
     // Information Field (информационное поле)
-    private Byte[] informationField;
+    private byte[] informationField;
     // Frame Check Sequence (код целостности HDLC кадра - FCS)
-    private Byte[] frameCheckSequence;
+    private byte[] frameCheckSequence;
     // End flag delimiter (флаг конца последовательности - FD)
-    private Byte endDelimiter;
+    private byte endDelimiter;
 
 }
