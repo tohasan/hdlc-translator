@@ -1,4 +1,10 @@
-package org.tohasan.hdlctranslator.entities;
+package org.tohasan.hdlctranslator.hdlc;
+
+import org.tohasan.hdlctranslator.common.Postprocessor;
+import org.tohasan.hdlctranslator.entities.Frame;
+import org.tohasan.hdlctranslator.entities.PackageItem;
+
+import java.util.List;
 
 /**
  * Структура HDLC пакета (сообщения):
@@ -58,28 +64,24 @@ package org.tohasan.hdlctranslator.entities;
  * author: IgorKaSan
  * date: 04.03.2018.
  */
-public class HdlcFrame {
-    // Start flag delimiter (флаг начала последовательности - FD)
-    private byte startDelimiter;
-    // Frame format (определение формата кадра - FF)
-    private byte[] frameFormat = new byte[2];
-    // -- AddressField - адресное поле
-    // ClientAddress (адрес клиента)
-    private byte clientAddress;
-    // -- ServerAddress - адрес сервера
-    // upper part - logical device address (логический адрес устройства)
-    private byte[] logicalDeviceAddress;
-    // lower part - physical device address (физический адрес устройства)
-    private byte[] physicalDeviceAddress;
-    // Control Field (управляющее поле - CF)
-    private byte controlField;
-    // Header Check Sequence (код целостности заголовка - HCS)
-    private byte[] headerCheckSequence;
-    // Information Field (информационное поле)
-    private byte[] informationField;
-    // Frame Check Sequence (код целостности HDLC кадра - FCS)
-    private byte[] frameCheckSequence;
-    // End flag delimiter (флаг конца последовательности - FD)
-    private byte endDelimiter;
+public class HdlcFrame implements Frame {
+    private List<PackageItem> items;
 
+    public HdlcFrame(List<PackageItem> items) {
+        this.items = items;
+    }
+
+    @Override
+    public List<PackageItem> getItems() {
+        return items;
+    }
+
+    public StringBuffer getDescription() {
+        StringBuffer description = new StringBuffer();
+
+        for (PackageItem packageItem : this.items) {
+            description.append(packageItem.getDescription() + "\n");
+        }
+        return description;
+    }
 }
