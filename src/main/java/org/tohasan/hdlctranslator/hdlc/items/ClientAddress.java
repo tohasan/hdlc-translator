@@ -22,11 +22,18 @@ public class ClientAddress extends HdlcItem {
         StringBuffer description = super.getDescription();
 
         description.append(" - адрес клиента (client address)");
+        description.append(" = " + Integer.toString(getValue()));
         return description;
     }
 
     @Override
     public int size() {
         return 1;
+    }
+
+    public int getValue() {
+        int address;
+        address = super.getBytes().get(0) >> 1;
+        return address;
     }
 }

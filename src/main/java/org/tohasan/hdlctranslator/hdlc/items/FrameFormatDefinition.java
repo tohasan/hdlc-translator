@@ -22,8 +22,8 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 public class FrameFormatDefinition extends HdlcItem {
     private final static byte MASK_IS_SEGMENTED = 0x08;
 
-    boolean isSegmented;
-    byte frameSize;
+    private boolean isSegmented;
+    private byte frameSize;
 
     @Override
     public void extract(Package pack, Frame frame) {
@@ -40,6 +40,8 @@ public class FrameFormatDefinition extends HdlcItem {
         StringBuffer description = super.getDescription();
 
         description.append(" - определение формата кадра (frame format)");
+        description.append(isSegmented ? " - сегментированный кадр" : " - несегментированный кадр");
+        description.append(" - длина кадра: " + String.format("%d", frameSize));
         return description;
     }
 

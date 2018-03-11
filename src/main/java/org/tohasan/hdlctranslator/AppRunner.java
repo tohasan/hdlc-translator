@@ -18,7 +18,8 @@ import java.util.List;
  */
 public class AppRunner {
         private final static String HDLC_FLOW_FILENAME = "hdlcflow.txt";
-        public static void main(String[] args){
+
+    public static void main(String[] args){
 
             try (
                     InputStream inputStream = new FileInputStream(HDLC_FLOW_FILENAME);

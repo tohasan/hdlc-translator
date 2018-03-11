@@ -4,6 +4,8 @@ import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.Package;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
+import java.util.BitSet;
+
 /**
  * SA (ServerAddress - <адрес сервера>) – состоит из двух частей,
  *     верхняя часть (upper part) – это <логический адрес устройства> (logical device address),
@@ -31,6 +33,14 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  */
 public class ServerAddress extends HdlcItem {
     private final static byte MASK_IS_FINAL_PART = 0x01;
+    private final static byte MASK_SIGN_REMOVE = 0x7F;
+
+    private final static int ONE_BYTE_ADDRESS = 1;
+    private final static int TWO_BYTE_ADDRESS = 2;
+    private final static int FOUR_BYTE_ADDRESS = 4;
+
+    private int upperPart = 0;
+    private int lowerPart = 0;
 
     @Override
     public void extract(Package pack, Frame frame) {
@@ -46,6 +56,7 @@ public class ServerAddress extends HdlcItem {
         StringBuffer description = super.getDescription();
 
         description.append(" - адрес сервера (server address)");
+        description.append(" = " + getValue() + " - логический адрес сервера (upper part server address):физический адрес сервера (lower part setver address) ");
         return description;
     }
 
@@ -53,4 +64,47 @@ public class ServerAddress extends HdlcItem {
     public int size() {
         return getBytes().size();
     }
+
+    public String getValue() {
+        String address;
+
+        int addressLenght = super.getBytes().size();
+        switch (addressLenght) {
+            case ONE_BYTE_ADDRESS:
+                upperPart = super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE;
+                break;
+
+            case TWO_BYTE_ADDRESS:
+                upperPart = super.getBytes().get(1) >> 1 & MASK_SIGN_REMOVE;
+                lowerPart = super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE;
+                break;
+
+            case FOUR_BYTE_ADDRESS:
+                lowerPart = (super.getBytes().get(1) >> 1 & MASK_SIGN_REMOVE) << 7 | (super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE);
+//                upperPart = ((super.getBytes().get(1) >>> 1) << 7) | (super.getBytes().get(0) >>> 1);
+                // upper 1: 1 1 1 1 1 1 0 0
+                // upper 0: 1 1 0 1 1 0 1 0
+                // -> upper 1: 0 1 1 1 1 1 1 0
+                // -> upper 0: 0 1 1 0 1 1 0 1
+                // upper 1 << 7 -> 0 1 1 1 1 1 1 0 0 0 0 0 0 0
+                // upper 0:                    0 1 1 0 1 1 0 1
+                // | или +
+
+                // 1 1 0 1 1 0 1 0 -> 1 1 1 0 1 1 0 1
+                //                    0 1 1 1 1 1 1 1 = 0x7F
+                // & наложить маску
+                upperPart = (super.getBytes().get(3) >> 1 & MASK_SIGN_REMOVE) << 7 | (super.getBytes().get(2) >> 1 & MASK_SIGN_REMOVE);
+                break;
+        }
+
+        address = String.format("%d:%d", upperPart, lowerPart);
+        // Integer.toString(upperPart)+ Integer.toString(lowerPart);
+
+        return address;
+    }
+
+    private int getAddress() {
+        return 0;
+    }
+
 }
