@@ -35,10 +35,11 @@ public class AppRunner {
                 HdlcFrame frame = new HdlcFrame(Arrays.<PackageItem>asList(
                         new FrameDelimiter(),
                         new FrameFormatDefinition(),
+                        //new ServerAddress(), // для нисходящего пакета
                         new ClientAddress(),
-                        new ServerAddress(),
-                        new HeaderCheckSequence(),
+                        new ServerAddress(), // для восходящего пакета
                         new ControlField(),
+                        new HeaderCheckSequence(), // отсутствует в SNRM запросе и может отсутствовать в других командах, типа, Receive ready, при этом в ответе присутствует.
                         new InformationField(),
                         new FrameCheckSequence(),
                         new FrameDelimiter()
