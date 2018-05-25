@@ -32,7 +32,7 @@ public class AppRunner {
 
                 System.out.println(new Postprocessor(preprocessor.getBytes()).getString() + "\n");
 
-                HdlcFrame frame = new HdlcFrame(Arrays.asList(
+                HdlcFrame frame = new HdlcFrame(Arrays.<PackageItem>asList(
                         new FrameDelimiter(),
                         new FrameFormatDefinition(),
                         new ClientAddress(),
