@@ -8,4 +8,8 @@ import java.util.List;
  */
 public interface Frame {
     List<PackageItem> getItems();
+
+    void setItems(List<PackageItem> items);
+
+    String getDescription();
 }

@@ -1,5 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
+import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -21,12 +22,13 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  */
 public class ControlField  extends HdlcItem {
 
-    @Override
-    public StringBuffer getDescription() {
-        StringBuffer description = super.getDescription();
+    public ControlField(Frame frame) {
+        super(frame);
+    }
 
-        description.append(" - управляющее поле (control field)");
-        return description;
+    @Override
+    protected String getDescriptionTip() {
+        return "управляющее поле (control field)";
     }
 
     @Override

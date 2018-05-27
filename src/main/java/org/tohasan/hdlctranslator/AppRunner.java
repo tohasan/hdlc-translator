@@ -1,58 +1,36 @@
 package org.tohasan.hdlctranslator;
 
-import org.tohasan.hdlctranslator.common.Postprocessor;
-import org.tohasan.hdlctranslator.common.Preprocessor;
-import org.tohasan.hdlctranslator.entities.PackageItem;
-import org.tohasan.hdlctranslator.hdlc.HdlcFrame;
-import org.tohasan.hdlctranslator.hdlc.HdlcPackage;
-import org.tohasan.hdlctranslator.hdlc.items.*;
-import org.tohasan.hdlctranslator.processor.HdlcProcessor;
+import org.tohasan.hdlctranslator.hdlc.HdlcTranslator;
 
-import java.io.*;
-import java.util.Arrays;
-import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * author: IgorKaSan
  * date: 04.03.2018.
  */
 public class AppRunner {
-        private final static String HDLC_FLOW_FILENAME = "hdlcflow.txt";
+    private final static String HDLC_FLOW_FILENAME = "hdlcflow.txt";
+    private final static String RESULT_FILENAME = "hdlcflow.parsed.txt";
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        HdlcTranslator hdlcTranslator = new HdlcTranslator();
 
-            try (
-                    InputStream inputStream = new FileInputStream(HDLC_FLOW_FILENAME);
-//                    FileWriter writer = new FileWriter("hdlcdef.txt", false)
-            ) {
-                BufferedReader buffer = new BufferedReader(new InputStreamReader(inputStream));
-                Preprocessor preprocessor = new Preprocessor(buffer.readLine());
+        try (
+            Stream<String> stream = Files.lines(Paths.get(HDLC_FLOW_FILENAME));
+            PrintWriter pw = new PrintWriter(Files.newBufferedWriter(Paths.get(RESULT_FILENAME)))
+        ) {
+            String result = stream
+                .map(hdlcTranslator::parse)
+                .collect(Collectors.joining("\n\n"));
 
-                HdlcPackage pack = new HdlcPackage(preprocessor.getBytes());
-
-                System.out.println(new Postprocessor(preprocessor.getBytes()).getString() + "\n");
-
-                HdlcFrame frame = new HdlcFrame(Arrays.<PackageItem>asList(
-                        new FrameDelimiter(),
-                        new FrameFormatDefinition(),
-                        //new ServerAddress(), // для нисходящего пакета
-                        new ClientAddress(),
-                        new ServerAddress(), // для восходящего пакета
-                        new ControlField(),
-                        new HeaderCheckSequence(), // отсутствует в SNRM запросе и может отсутствовать в других командах, типа, Receive ready, при этом в ответе присутствует.
-                        new InformationField(),
-                        new FrameCheckSequence(),
-                        new FrameDelimiter()
-                ));
-
-                for (PackageItem packageItem : frame.getItems()) {
-                    packageItem.extract(pack, frame);
-                }
-
-                System.out.println(frame.getDescription());
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            pw.print(result);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 }

@@ -1,5 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
+import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -10,12 +11,13 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  */
 public class FrameCheckSequence extends HdlcItem {
 
-    @Override
-    public StringBuffer getDescription() {
-        StringBuffer description = super.getDescription();
+    public FrameCheckSequence(Frame frame) {
+        super(frame);
+    }
 
-        description.append(" - код целостности кадра (frame check sequence)");
-        return description;
+    @Override
+    protected String getDescriptionTip() {
+        return "код целостности кадра (frame check sequence)";
     }
 
     @Override

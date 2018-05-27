@@ -1,9 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.Package;
-import org.tohasan.hdlctranslator.entities.PackageItem;
-import org.tohasan.hdlctranslator.entities.State;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -15,12 +12,13 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  */
 public class FrameDelimiter extends HdlcItem {
 
-    @Override
-    public StringBuffer getDescription() {
-        StringBuffer description = super.getDescription();
+    public FrameDelimiter(Frame frame) {
+        super(frame);
+    }
 
-        description.append(" - разделитель кадров (frame delimiter)");
-        return description;
+    @Override
+    protected String getDescriptionTip() {
+        return "разделитель кадров (frame delimiter)";
     }
 
     @Override

@@ -5,6 +5,12 @@ import org.tohasan.hdlctranslator.entities.Package;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
+ * CA (ClientAddress - <адрес клиента>) – 1 байт, значение идентифицирует клиента.
+ *         Зарезервированные адреса клиента:
+ *             0x00 – Нет станции (No-station),
+ *             0x01 – Процесс управляется клиентом (Client Management Process),
+ *             0x10 – Общий доступ (Public Client – самый низкий уровень безопасности).
+ *         Адрес клиента используется для выбора уровня доступа. При кодировании адреса клиента резервируется младший значащий бит, который затем устанавливается в единицу.
  * SA (ServerAddress - <адрес сервера>) – состоит из двух частей,
  *     верхняя часть (upper part) – это <логический адрес устройства> (logical device address),
  *     нижняя часть (lower part) – это <физический адрес устройства> (physical device address).
@@ -29,7 +35,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class ServerAddress extends HdlcItem {
+public class Address extends HdlcItem {
     private final static byte MASK_IS_FINAL_PART = 0x01;
     private final static byte MASK_SIGN_REMOVE = 0x7F;
 
@@ -40,7 +46,7 @@ public class ServerAddress extends HdlcItem {
     private int upperPart = 0;
     private int lowerPart = 0;
 
-    public ServerAddress(Frame frame) {
+    public Address(Frame frame) {
         super(frame);
     }
 
@@ -55,6 +61,10 @@ public class ServerAddress extends HdlcItem {
 
     @Override
     protected String getDescriptionTip() {
+        if (this.isClient()) {
+            return "адрес клиента (client address) = " + getValue();
+        }
+
         return "адрес сервера (server address) = " + getValue() +
             " - логический адрес сервера (upper part server address):физический адрес сервера (lower part setver address)";
     }
@@ -65,10 +75,7 @@ public class ServerAddress extends HdlcItem {
     }
 
     private String getValue() {
-        String address;
-
-        int addressLenght = super.getBytes().size();
-        switch (addressLenght) {
+        switch (this.getBytes().size()) {
             case ONE_BYTE_ADDRESS:
                 upperPart = super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE;
                 break;
@@ -80,7 +87,7 @@ public class ServerAddress extends HdlcItem {
 
             case FOUR_BYTE_ADDRESS:
                 lowerPart = (super.getBytes().get(1) >> 1 & MASK_SIGN_REMOVE) << 7 | (super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE);
-//                upperPart = ((super.getBytes().get(1) >>> 1) << 7) | (super.getBytes().get(0) >>> 1);
+                // upperPart = ((super.getBytes().get(1) >>> 1) << 7) | (super.getBytes().get(0) >>> 1);
                 // upper 1: 1 1 1 1 1 1 0 0
                 // upper 0: 1 1 0 1 1 0 1 0
                 // -> upper 1: 0 1 1 1 1 1 1 0
@@ -96,13 +103,10 @@ public class ServerAddress extends HdlcItem {
                 break;
         }
 
-        address = String.format("%d:%d", upperPart, lowerPart);
-        // Integer.toString(upperPart)+ Integer.toString(lowerPart);
-
-        return address;
+        return this.isClient() ? Integer.toString(upperPart) : String.format("%d:%d", upperPart, lowerPart);
     }
 
-    private int getAddress() {
-        return 0;
+    private boolean isClient() {
+        return getBytes().size() == 1;
     }
 }

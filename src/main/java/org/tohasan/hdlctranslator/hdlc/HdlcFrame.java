@@ -1,10 +1,11 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.common.Postprocessor;
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.PackageItem;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Структура HDLC пакета (сообщения):
@@ -55,10 +56,10 @@ import java.util.List;
  *              1 – UA – Ненумерованное подтверждение (Unnumbered Acknowledgment)
  *      HCS (Header Check Sequence - <код целостности заголовка>) – (2 байта).
  * <p>
- *      Information Field (<Информационное поле>)
- *      Максимальное значение длины информационного поля 2030 байт (значение по умолчанию 128 байт)
+ * Information Field (<Информационное поле>)
+ * Максимальное значение длины информационного поля 2030 байт (значение по умолчанию 128 байт)
  * <p>
- *      FCS (Frame Check Sequence - <код целостности HDLC кадра>) – 2 байта.
+ * FCS (Frame Check Sequence - <код целостности HDLC кадра>) – 2 байта.
  * FD (Frame Delimiter - <разделитель кадров>) – 1 байт, все HDLC кадры должны начинаться и заканчиваться полем флага "01111110" (0x7E).
  * <p>
  * author: IgorKaSan
@@ -67,8 +68,8 @@ import java.util.List;
 public class HdlcFrame implements Frame {
     private List<PackageItem> items;
 
-    public HdlcFrame(List<PackageItem> items) {
-        this.items = items;
+    HdlcFrame() {
+        this.items = new ArrayList<>();
     }
 
     @Override
@@ -76,12 +77,15 @@ public class HdlcFrame implements Frame {
         return items;
     }
 
-    public StringBuffer getDescription() {
-        StringBuffer description = new StringBuffer();
+    public void setItems(List<PackageItem> items) {
+        this.items = items;
+    }
 
-        for (PackageItem packageItem : this.items) {
-            description.append(packageItem.getDescription() + "\n");
-        }
-        return description;
+    @Override
+    public String getDescription() {
+        return this.items.stream()
+            .filter(item -> !item.empty())
+            .map(PackageItem::getDescription)
+            .collect(Collectors.joining("\n"));
     }
 }

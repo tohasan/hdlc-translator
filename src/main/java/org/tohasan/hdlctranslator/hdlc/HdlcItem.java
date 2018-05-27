@@ -14,10 +14,16 @@ import java.util.List;
  */
 public abstract class HdlcItem implements PackageItem {
     private List<Byte> bytes = new ArrayList<>();
-    private StringBuffer description = new StringBuffer();
+    protected Frame frame;
+
+    public HdlcItem(Frame frame) {
+        this.frame = frame;
+    }
+
+    protected abstract String getDescriptionTip();
 
     @Override
-    public void extract(Package pack, Frame frame) {
+    public void extract(Package pack) {
         for (int i = 0; i < size(); i++) {
             bytes.add(0, pack.nextByte());
         }
@@ -28,16 +34,21 @@ public abstract class HdlcItem implements PackageItem {
         return bytes;
     }
 
+
     @Override
-    public StringBuffer getDescription() {
+    public String getDescription() {
+        StringBuilder description = new StringBuilder();
 
         for (int i = bytes.size() - 1; i >= 0; i--) {
-//            for (int i = 0; i < bytes.size(); i++) {
-            bytes.get(i).byteValue();
-            description.append(Postprocessor.toHexChar(bytes.get(i).byteValue() >>> 4 & 15));
-            description.append(Postprocessor.toHexChar(bytes.get(i).byteValue() & 15));
+            description.append(Postprocessor.toHexChar(bytes.get(i) >>> 4 & 15));
+            description.append(Postprocessor.toHexChar(bytes.get(i) & 15));
         }
 
-        return description;
+        return !this.empty() ? String.format("%s - %s", description.toString(), this.getDescriptionTip()) : "";
+    }
+
+    @Override
+    public boolean empty() {
+        return bytes.size() == 0;
     }
 }

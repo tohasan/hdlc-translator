@@ -16,9 +16,13 @@ import java.util.List;
  */
 public class InformationField extends HdlcItem {
 
+    public InformationField(Frame frame) {
+        super(frame);
+    }
+
     @Override
-    public void extract(Package pack, Frame frame) {
-        List<PackageItem> items = frame.getItems();
+    public void extract(Package pack) {
+        List<PackageItem> items = this.frame.getItems();
 
         int sumFieldSizeExcludeCurrent = 0;
         for (PackageItem item : items) {
@@ -35,12 +39,8 @@ public class InformationField extends HdlcItem {
     }
 
     @Override
-    public StringBuffer getDescription() {
-
-        StringBuffer description = new StringBuffer().append("Информационное поле (information field): ");
-
-        description.append(super.getDescription());
-        return description;
+    protected String getDescriptionTip() {
+        return "информационное поле (information field)";
     }
 
     @Override

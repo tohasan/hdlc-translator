@@ -1,17 +1,5 @@
 package org.tohasan.hdlctranslator.processor;
 
-import org.tohasan.hdlctranslator.common.Postprocessor;
-import org.tohasan.hdlctranslator.common.Preprocessor;
-import org.tohasan.hdlctranslator.entities.Package;
-import org.tohasan.hdlctranslator.hdlc.HdlcFrame;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * author: IgorKaSan
  * date: 04.03.2018.
@@ -29,7 +17,7 @@ public class HdlcProcessor {
 //            String hdlcMessage;
 //
 //            while ((hdlcMessage = buffer.readLine()) != null){
-//                Preprocessor preprocessor = new Preprocessor(hdlcMessage);
+//                StringHelper preprocessor = new StringHelper(hdlcMessage);
 //                byte[] bytes = preprocessor.getBytes();
 //                int byteArrayLength = bytes.length;
 //

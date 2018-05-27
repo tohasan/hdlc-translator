@@ -25,9 +25,13 @@ public class FrameFormatDefinition extends HdlcItem {
     private boolean isSegmented;
     private byte frameSize;
 
+    public FrameFormatDefinition(Frame frame) {
+        super(frame);
+    }
+
     @Override
-    public void extract(Package pack, Frame frame) {
-        super.extract(pack, frame);
+    public void extract(Package pack) {
+        super.extract(pack);
 
         byte flags = getBytes().get(1);
         isSegmented = 0 < (flags & MASK_IS_SEGMENTED);
@@ -36,13 +40,10 @@ public class FrameFormatDefinition extends HdlcItem {
     }
 
     @Override
-    public StringBuffer getDescription() {
-        StringBuffer description = super.getDescription();
-
-        description.append(" - определение формата кадра (frame format)");
-        description.append(isSegmented ? " - сегментированный кадр" : " - несегментированный кадр");
-        description.append(" - длина кадра: " + String.format("%d", frameSize));
-        return description;
+    protected String getDescriptionTip() {
+        return "определение формата кадра (frame format)" +
+            (isSegmented ? " - сегментированный кадр" : " - несегментированный кадр") +
+            String.format(" - длина кадра: %d", frameSize);
     }
 
     @Override

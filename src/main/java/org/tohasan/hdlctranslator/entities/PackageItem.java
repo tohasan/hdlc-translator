@@ -7,11 +7,14 @@ import java.util.List;
  * date: 09.03.2018.
  */
 public interface PackageItem {
-    void extract(Package pack, Frame frame);
+    void extract(Package pack);
 
     List<Byte> getBytes();
 
-    StringBuffer getDescription();
+    String getDescription();
 
     int size();
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    boolean empty();
 }

@@ -1,7 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.Package;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -17,13 +16,13 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  */
 public class ClientAddress extends HdlcItem {
 
-    @Override
-    public StringBuffer getDescription() {
-        StringBuffer description = super.getDescription();
+    public ClientAddress(Frame frame) {
+        super(frame);
+    }
 
-        description.append(" - адрес клиента (client address)");
-        description.append(" = " + Integer.toString(getValue()));
-        return description;
+    @Override
+    protected String getDescriptionTip() {
+        return "адрес клиента (client address) = " + Integer.toString(getValue());
     }
 
     @Override
@@ -31,7 +30,7 @@ public class ClientAddress extends HdlcItem {
         return 1;
     }
 
-    public int getValue() {
+    private int getValue() {
         int address;
         address = super.getBytes().get(0) >> 1;
         return address;
