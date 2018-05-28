@@ -8,7 +8,7 @@ class HdlcItemSpec extends Specification {
     HdlcPackage pack
 
     def setup() {
-        item = new HdlcItem() {
+        item = new HdlcItem(new HdlcFrame()) {
             @Override
             int size() {
                 return 2
@@ -16,7 +16,7 @@ class HdlcItemSpec extends Specification {
 
             @Override
             protected String getDescriptionTip() {
-                return ''
+                return 'no description'
             }
         }
 
@@ -48,6 +48,6 @@ class HdlcItemSpec extends Specification {
         item.extract(pack)
 
         expect:
-        item.getDescription() == 'A00A'
+        item.getDescription() == 'A00A - no description'
     }
 }
