@@ -36,7 +36,24 @@ public class HdlcTranslator {
             new Address(this.frame),
             new ControlField(this.frame),
             new HeaderCheckSequence(this.frame),
-            new InformationField(this.frame),
+         //   new InformationField(this.frame),
+            new LLC(this.frame),
+            new ApduTypeField(this.frame),
+            new Quantity(this.frame),
+         //   new VAS(this.frame),  // для запроса на чтение
+         //   new ShortName(this.frame),  // для запроса на чтение
+                // Заголовок блока данных
+            new ReadResponseFormat(this.frame),  // для ответа на запрос на чтение
+            new LastBlock(this.frame),  // для ответа на запрос на чтение
+            new BlockNumber(this.frame),  // для ответа на запрос на чтение
+            new DataBlockLength(this.frame),  // для ответа на запрос на чтение
+                // конец заголовка блока (длина блока данных рассматривается в составе заголовка)
+            new ItemNumber(this.frame),  // для ответа на запрос на чтение
+            new ResultDiagnosticFlag(this.frame),  // для ответа на запрос на чтение
+            new ItemType(this.frame),  // для ответа на запрос на чтение
+            new ItemLength(this.frame),  // для ответа на запрос на чтение
+            new ItemValue(this.frame),  // для ответа на запрос на чтение
+            new RawData(this.frame),  // не разобранные данные
             new FrameCheckSequence(this.frame),
             new FrameDelimiter(this.frame)
         ));
