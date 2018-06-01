@@ -19,7 +19,7 @@ public class AcseTag extends HdlcItem {
 
     @Override
     protected String getDescriptionTip() {
-        return "длина запроса ассоциации приложения в байтах (ACSE Tag) - [" +  Integer.toString(getValue()) + "]";
+        return "тег элемента управления ассоциацией (ACSE Tag) - [" +  Integer.toString(getValue()) + "]";
     }
 
     @Override
