@@ -39,20 +39,45 @@ public class HdlcTranslator {
          //   new InformationField(this.frame),
             new LLC(this.frame),
             new ApduTypeField(this.frame),
-            new Quantity(this.frame),
-         //   new VAS(this.frame),  // для запроса на чтение
-         //   new ShortName(this.frame),  // для запроса на чтение
-                // Заголовок блока данных
-            new ReadResponseFormat(this.frame),  // для ответа на запрос на чтение
-            new LastBlock(this.frame),  // для ответа на запрос на чтение
-            new BlockNumber(this.frame),  // для ответа на запрос на чтение
-            new DataBlockLength(this.frame),  // для ответа на запрос на чтение
-                // конец заголовка блока (длина блока данных рассматривается в составе заголовка)
-            new ItemNumber(this.frame),  // для ответа на запрос на чтение
-            new ResultDiagnosticFlag(this.frame),  // для ответа на запрос на чтение
-            new ItemType(this.frame),  // для ответа на запрос на чтение
-            new ItemLength(this.frame),  // для ответа на запрос на чтение
-            new ItemValue(this.frame),  // для ответа на запрос на чтение
+            new AarqLength(this.frame),  // для запроса ассоциации приложения
+                // Элемент Службы Управления Ассоциацией tag [1]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseDataType(this.frame),  // для ассоциации приложения
+            new AcseDataLength(this.frame),  // для ассоциации приложения
+            new AcseValue(this.frame),  // для ассоциации приложения
+                // Конец элемента Службы Управления Ассоциацией
+                // Элемент Службы Управления Ассоциацией tag [6]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseDataType(this.frame),  // для ассоциации приложения
+            new AcseDataLength(this.frame),  // для ассоциации приложения
+            new AcseValue(this.frame),  // для ассоциации приложения
+                // Конец элемента Службы Управления Ассоциацией
+                // Элемент Службы Управления Ассоциацией tag [10]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseDataType(this.frame),  //
+            new AcseDataLength(this.frame),  //
+                // Конец элемента Службы Управления Ассоциацией
+                // Элемент Службы Управления Ассоциацией tag [11]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseValue(this.frame),  // для ассоциации приложения
+                // Конец элемента Службы Управления Ассоциацией
+                // Элемент Службы Управления Ассоциацией tag [12]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseDataType(this.frame),  //
+            new AcseDataLength(this.frame),  //
+                // Конец элемента Службы Управления Ассоциацией
+                // Элемент Службы Управления Ассоциацией tag [30]
+            new AcseTag(this.frame),  // для ассоциации приложения
+            new AcseLength(this.frame),  // для ассоциации приложения
+            new AcseDataType(this.frame),  // для ассоциации приложения
+            new AcseDataLength(this.frame),  // для ассоциации приложения
+            new AcseValue(this.frame),  // комплексное значение, надо разбирать дальше
+                // Конец элемента Службы Управления Ассоциацией
             new RawData(this.frame),  // не разобранные данные
             new FrameCheckSequence(this.frame),
             new FrameDelimiter(this.frame)
