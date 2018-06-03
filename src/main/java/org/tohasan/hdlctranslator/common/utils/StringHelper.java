@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.common;
+package org.tohasan.hdlctranslator.common.utils;
 
 /**
  * author: IgorKaSan

@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.entities.Package;
+import org.tohasan.hdlctranslator.common.entities.Package;
 
 /**
  * author: IgorKaSan

@@ -1,9 +1,9 @@
 package org.tohasan.hdlctranslator.hdlc;
 
 import org.tohasan.hdlctranslator.apdu.items.*;
-import org.tohasan.hdlctranslator.common.StringHelper;
-import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.PackageItem;
+import org.tohasan.hdlctranslator.common.utils.StringHelper;
+import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.PackageItem;
 import org.tohasan.hdlctranslator.hdlc.items.*;
 
 import java.util.Arrays;
@@ -38,7 +38,7 @@ public class HdlcTranslator {
             new ControlField(this.frame),
             new HeaderCheckSequence(this.frame),
          //   new InformationField(this.frame),
-            new LLC(this.frame),
+            new Llc(this.frame),
             new ApduTypeField(this.frame),
             new AarqLength(this.frame),  // для запроса ассоциации приложения
                 // Элемент Службы Управления Ассоциацией tag [1]

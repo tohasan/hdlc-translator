@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.apdu;
 
-import org.tohasan.hdlctranslator.entities.Package;
+import org.tohasan.hdlctranslator.common.entities.Package;
 
 public class ApduPackage implements Package {
     private byte[] bytes;

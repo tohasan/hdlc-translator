@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.enums;
+package org.tohasan.hdlctranslator.apdu.enums;
 
 public enum ReadResponse {
     DATA((byte) 0x00),

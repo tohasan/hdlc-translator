@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.enums;
+package org.tohasan.hdlctranslator.hdlc.enums;
 
 public enum ControlFieldType {
     SNRM((byte) 0x93),

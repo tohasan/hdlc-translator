@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.PackageItem;
+import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.PackageItem;
 
 import java.util.ArrayList;
 import java.util.List;

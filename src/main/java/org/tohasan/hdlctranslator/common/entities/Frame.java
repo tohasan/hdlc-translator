@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.entities;
+package org.tohasan.hdlctranslator.common.entities;
 
 import java.util.List;
 

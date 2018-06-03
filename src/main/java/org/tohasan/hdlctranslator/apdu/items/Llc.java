@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
-import org.tohasan.hdlctranslator.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -12,9 +12,9 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * date: 31.05.2018.
  */
 
-public class LLC extends HdlcItem {
+public class Llc extends HdlcItem {
 
-    public LLC(Frame frame) {
+    public Llc(Frame frame) {
         super(frame);
     }
 

@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
-import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.Package;
+import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.Package;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**

@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc
 
-import org.tohasan.hdlctranslator.common.StringHelper
+import org.tohasan.hdlctranslator.common.utils.StringHelper
 import spock.lang.Specification
 
 class HdlcItemSpec extends Specification {

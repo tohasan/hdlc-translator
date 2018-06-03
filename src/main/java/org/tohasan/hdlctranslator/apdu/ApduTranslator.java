@@ -1,9 +1,9 @@
 package org.tohasan.hdlctranslator.apdu;
 
-import org.tohasan.hdlctranslator.apdu.items.LLC;
+import org.tohasan.hdlctranslator.apdu.items.Llc;
 import org.tohasan.hdlctranslator.apdu.items.RawData;
-import org.tohasan.hdlctranslator.entities.Frame;
-import org.tohasan.hdlctranslator.entities.PackageItem;
+import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.PackageItem;
 
 import java.util.Arrays;
 
@@ -29,7 +29,7 @@ public class ApduTranslator {
     private void resetFrame() {
         this.frame = new ApduFrame();
         this.frame.setItems(Arrays.asList(
-                new LLC(this.frame),
+                new Llc(this.frame),
                 new RawData(this.frame)
         ));
     }

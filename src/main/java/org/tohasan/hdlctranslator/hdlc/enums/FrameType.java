@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.hdlc;
+package org.tohasan.hdlctranslator.hdlc.enums;
 
 /**
  * author: IgorKaSan

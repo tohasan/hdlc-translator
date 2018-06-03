@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
-import org.tohasan.hdlctranslator.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
@@ -16,9 +16,9 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * date: 31.05.2018.
  */
 
-public class VAS extends HdlcItem {
+public class Vas extends HdlcItem {
 
-    public VAS(Frame frame) {
+    public Vas(Frame frame) {
         super(frame);
     }
 
