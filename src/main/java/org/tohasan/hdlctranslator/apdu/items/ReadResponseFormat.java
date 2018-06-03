@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ReadResponseFormat – (1 байт), специфицирует тип/формат ответа:
@@ -10,9 +10,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-
-public class ReadResponseFormat extends HdlcItem {
+public class ReadResponseFormat extends CommonItem {
 
     public ReadResponseFormat(Frame frame) {
         super(frame);
@@ -29,8 +27,6 @@ public class ReadResponseFormat extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0);
-        return code;
+        return super.getBytes().get(0);
     }
 }

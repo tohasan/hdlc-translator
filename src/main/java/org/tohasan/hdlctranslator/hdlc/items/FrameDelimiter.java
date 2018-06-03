@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * FD (Frame Delimiter - <разделитель кадров>) – 1 байт,
@@ -10,7 +10,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class FrameDelimiter extends HdlcItem {
+public class FrameDelimiter extends CommonItem {
 
     public FrameDelimiter(Frame frame) {
         super(frame);

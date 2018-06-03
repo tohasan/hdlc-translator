@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * LLC (Logical link control) – (3 байта), все APDU кадры начинаюстя LLC полем:
@@ -11,8 +11,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-public class Llc extends HdlcItem {
+public class Llc extends CommonItem {
 
     public Llc(Frame frame) {
         super(frame);
@@ -27,5 +26,4 @@ public class Llc extends HdlcItem {
     public int size() {
         return 3;
     }
-
 }

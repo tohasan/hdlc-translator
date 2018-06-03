@@ -1,11 +1,13 @@
 package org.tohasan.hdlctranslator.hdlc
 
+import org.tohasan.hdlctranslator.common.entities.Package
+import org.tohasan.hdlctranslator.common.entities.impl.DataPackage
 import org.tohasan.hdlctranslator.common.utils.StringHelper
 import spock.lang.Specification
 
 class HdlcItemSpec extends Specification {
     HdlcItem item
-    HdlcPackage pack
+    Package pack
 
     def setup() {
         item = new HdlcItem(new HdlcFrame()) {
@@ -21,7 +23,7 @@ class HdlcItemSpec extends Specification {
         }
 
         def stringHelper = new StringHelper('7E A0 0A 00 02 50 75 03 93 B7 E1 7E')
-        pack = new HdlcPackage(stringHelper.getBytes())
+        pack = new DataPackage(stringHelper.getBytes())
     }
 
     def "should extract specified number of bytes if package size is fixed"() {

@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ACSE Data Length – (1 байт), специфицирует длину закодированного значения ACSE (Association Control Service Element - Элемент Службы Управления Ассоциацией) в байтах.
@@ -9,8 +9,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 01.06.2018.
  */
-
-public class AcseDataLength extends HdlcItem {
+public class AcseDataLength extends CommonItem {
 
     public AcseDataLength(Frame frame) {
         super(frame);
@@ -27,8 +26,6 @@ public class AcseDataLength extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0);
-        return code;
+        return super.getBytes().get(0);
     }
 }

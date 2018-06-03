@@ -6,8 +6,8 @@ import java.util.List;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public interface PackageItem {
-    void extract(Package pack);
+public interface FrameItem {
+    List<Byte> extract(Package pack);
 
     List<Byte> getBytes();
 

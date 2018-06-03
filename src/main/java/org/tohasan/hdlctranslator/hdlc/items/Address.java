@@ -2,7 +2,9 @@ package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.Package;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
+
+import java.util.List;
 
 /**
  * CA (ClientAddress - <адрес клиента>) – 1 байт, значение идентифицирует клиента.
@@ -35,7 +37,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class Address extends HdlcItem {
+public class Address extends CommonItem {
     private final static byte MASK_IS_FINAL_PART = 0x01;
     private final static byte MASK_SIGN_REMOVE = 0x7F;
 
@@ -51,12 +53,14 @@ public class Address extends HdlcItem {
     }
 
     @Override
-    public void extract(Package pack) {
+    public List<Byte> extract(Package pack) {
         byte addressPart;
         do {
             addressPart = pack.nextByte();
             getBytes().add(0, addressPart);
         } while ((addressPart & MASK_IS_FINAL_PART) == 0);
+
+        return getBytes();
     }
 
     @Override

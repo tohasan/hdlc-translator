@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * FCS (Frame Check Sequence - <код целостности HDLC кадра>) – 2 байта.
@@ -9,7 +9,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class FrameCheckSequence extends HdlcItem {
+public class FrameCheckSequence extends CommonItem {
 
     public FrameCheckSequence(Frame frame) {
         super(frame);

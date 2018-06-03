@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * AARQ Length – (1 байт), специфицирует длину содержимого AARQ (Application Association Request - запрос ассоциации приложения) в байтах.
@@ -9,8 +9,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 01.06.2018.
  */
-
-public class AarqLength extends HdlcItem {
+public class AarqLength extends CommonItem {
 
     public AarqLength(Frame frame) {
         super(frame);
@@ -27,8 +26,6 @@ public class AarqLength extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0);
-        return code;
+        return super.getBytes().get(0);
     }
 }

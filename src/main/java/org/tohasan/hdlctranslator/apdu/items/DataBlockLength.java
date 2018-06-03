@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * DataBlockLength – (1 байт), специфицирует длину блока данных в байтах.
@@ -9,8 +9,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-public class DataBlockLength extends HdlcItem {
+public class DataBlockLength extends CommonItem {
 
     public DataBlockLength(Frame frame) {
         super(frame);
@@ -27,8 +26,6 @@ public class DataBlockLength extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0);
-        return code;
+        return super.getBytes().get(0);
     }
 }

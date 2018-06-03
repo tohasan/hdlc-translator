@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * APDU type – (1 байт), специфицирует Блок данных COSEM протокола прикладного уровня (COSEM APDU – COSEM Application Layer Protocol Data Unit):
@@ -17,8 +17,15 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-public class ApduTypeField extends HdlcItem {
+public class ApduTypeField extends CommonItem {
+    final static int READ_REQUEST = 0x05;
+    final static int READ_RESPONSE = 0x0C;
+    final static int WRITE_REQUEST = 0x06;
+    final static int WRITE_RESPONSE = 0x0D;
+    final static int APPLICATION_ASSOCIATION_REQUEST = 0x60;
+    final static int APPLICATION_ASSOCIATION_RESPONSE = 0x61;
+    final static int GET_REQUEST = 0xC0;
+    final static int GET_RESPONSE = 0xC4;
 
     public ApduTypeField(Frame frame) {
         super(frame);
@@ -35,8 +42,6 @@ public class ApduTypeField extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0);
-        return code;
+        return super.getBytes().get(0);
     }
 }

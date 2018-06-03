@@ -1,7 +1,6 @@
 package org.tohasan.hdlctranslator.apdu.enums;
 
 public enum ApduType {
-
     READ_REQUEST((byte) 0x05),
     READ_RESPONSE((byte) 0x0C),
     WRITE_REQUEST((byte) 0x06),

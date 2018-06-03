@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * CF (Control Field - <управляющее поле>) – 1 байт, задает тип команды или ответа, а также значения счетчиков, отправленных/принятых кадров,
@@ -20,7 +20,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 10.03.2018.
  */
-public class ControlField  extends HdlcItem {
+public class ControlField  extends CommonItem {
 
     public ControlField(Frame frame) {
         super(frame);

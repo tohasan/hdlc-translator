@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ItemValue – (количество байт определяется типом данных), значение элемента данных в последовательности.
@@ -9,8 +9,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-public class ItemValue extends HdlcItem {
+public class ItemValue extends CommonItem {
 
     public ItemValue(Frame frame) {
         super(frame);

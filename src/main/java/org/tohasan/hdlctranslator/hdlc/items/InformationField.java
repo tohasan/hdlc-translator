@@ -1,9 +1,9 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
+import org.tohasan.hdlctranslator.apdu.ApduFrame;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.Package;
-import org.tohasan.hdlctranslator.common.entities.PackageItem;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 import java.util.List;
 
@@ -14,33 +14,29 @@ import java.util.List;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class InformationField extends HdlcItem {
+public class InformationField extends CommonItem {
+    private Frame apduFrame;
 
     public InformationField(Frame frame) {
         super(frame);
+        this.apduFrame = new ApduFrame();
     }
 
     @Override
-    public void extract(Package pack) {
-        List<PackageItem> items = this.frame.getItems();
+    public List<Byte> extract(Package pack) {
+        getBytes().clear();
+        getBytes().addAll(this.apduFrame.extract(pack));
+        return getBytes();
+    }
 
-        int sumFieldSizeExcludeCurrent = 0;
-        for (PackageItem item : items) {
-            if (item != this) {
-                sumFieldSizeExcludeCurrent += item.size();
-            }
-        }
-
-        int size = pack.size() - sumFieldSizeExcludeCurrent;
-
-        for (int i = 0; i < size; i++) {
-            getBytes().add(0, pack.nextByte());
-        }
+    @Override
+    public String getDescription() {
+        return !this.empty() ? apduFrame.getDescription() : "";
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "информационное поле (information field)";
+        return "";
     }
 
     @Override

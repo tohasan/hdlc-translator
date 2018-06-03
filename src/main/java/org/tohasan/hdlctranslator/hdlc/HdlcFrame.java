@@ -1,11 +1,12 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.PackageItem;
+import org.tohasan.hdlctranslator.common.entities.FrameItem;
+import org.tohasan.hdlctranslator.common.entities.Package;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
+import org.tohasan.hdlctranslator.hdlc.items.*;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Структура HDLC пакета (сообщения):
@@ -65,27 +66,19 @@ import java.util.stream.Collectors;
  * author: IgorKaSan
  * date: 04.03.2018.
  */
-public class HdlcFrame implements Frame {
-    private List<PackageItem> items;
+public class HdlcFrame extends CommonFrame {
 
-    HdlcFrame() {
-        this.items = new ArrayList<>();
-    }
-
-    @Override
-    public List<PackageItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<PackageItem> items) {
-        this.items = items;
-    }
-
-    @Override
-    public String getDescription() {
-        return this.items.stream()
-            .filter(item -> !item.empty())
-            .map(PackageItem::getDescription)
-            .collect(Collectors.joining("\n"));
+    public HdlcFrame() {
+        this.setItems(Arrays.asList(
+            new FrameDelimiter(this),
+            new FrameFormatDefinition(this),
+            new Address(this),
+            new Address(this),
+            new ControlField(this),
+            new HeaderCheckSequence(this),
+            new InformationField(this),
+            new FrameCheckSequence(this),
+            new FrameDelimiter(this)
+        ));
     }
 }

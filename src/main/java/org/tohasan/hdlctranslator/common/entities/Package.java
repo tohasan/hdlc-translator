@@ -6,5 +6,8 @@ package org.tohasan.hdlctranslator.common.entities;
  */
 public interface Package {
     byte nextByte();
+
     int size();
+
+    Package getRest();
 }

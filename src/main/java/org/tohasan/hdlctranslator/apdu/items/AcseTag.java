@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ACSE Tag – (1 байт), специфицирует ACSE (Association Control Service Element - Элемент Службы Управления Ассоциацией).
@@ -10,8 +10,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 01.06.2018.
  */
-
-public class AcseTag extends HdlcItem {
+public class AcseTag extends CommonItem {
 
     public AcseTag(Frame frame) {
         super(frame);
@@ -28,8 +27,6 @@ public class AcseTag extends HdlcItem {
     }
 
     private int getValue() {
-        int code;
-        code = super.getBytes().get(0) & 255; // & 255 исправляет отрицательное число, возвращаемое getBytes()
-        return code;
+        return super.getBytes().get(0) & 255; // & 255 исправляет отрицательное число, возвращаемое getBytes()
     }
 }

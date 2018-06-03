@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ResultDiagnosticFlag – (1 байт), специфицирует значение диагностики источника результата
@@ -11,7 +11,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * date: 31.05.2018.
  */
 
-public class ResultDiagnosticFlag extends HdlcItem {
+public class ResultDiagnosticFlag extends CommonItem {
 
     public ResultDiagnosticFlag(Frame frame) {
         super(frame);

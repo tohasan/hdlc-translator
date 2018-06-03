@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * Last Block Flag – (1 байт), специфицирует наличие признака последнего блока (last-block flag)
@@ -11,8 +11,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 31.05.2018.
  */
-
-public class LastBlock extends HdlcItem {
+public class LastBlock extends CommonItem {
 
     public LastBlock(Frame frame) {
         super(frame);

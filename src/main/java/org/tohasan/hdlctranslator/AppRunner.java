@@ -1,6 +1,7 @@
 package org.tohasan.hdlctranslator;
 
-import org.tohasan.hdlctranslator.hdlc.HdlcTranslator;
+import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.hdlc.HdlcFrame;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,14 +19,14 @@ public class AppRunner {
     private final static String RESULT_FILENAME = "hdlcflow.parsed.txt";
 
     public static void main(String[] args) {
-        HdlcTranslator hdlcTranslator = new HdlcTranslator();
+        Frame hdleFrame = new HdlcFrame();
 
         try (
             Stream<String> stream = Files.lines(Paths.get(HDLC_FLOW_FILENAME));
             PrintWriter pw = new PrintWriter(Files.newBufferedWriter(Paths.get(RESULT_FILENAME)))
         ) {
             String result = stream
-                .map(hdlcTranslator::parse)
+                .map(hdleFrame::parse)
                 .collect(Collectors.joining("\n\n"));
 
             pw.print(result);

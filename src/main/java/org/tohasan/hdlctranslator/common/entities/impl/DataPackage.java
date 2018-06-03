@@ -1,12 +1,14 @@
-package org.tohasan.hdlctranslator.apdu;
+package org.tohasan.hdlctranslator.common.entities.impl;
 
 import org.tohasan.hdlctranslator.common.entities.Package;
 
-public class ApduPackage implements Package {
+import java.util.Arrays;
+
+public class DataPackage implements Package {
     private byte[] bytes;
     private int index = 0;
 
-    ApduPackage(byte[] bytes) {
+    public DataPackage(byte[] bytes) {
         this.bytes = bytes;
     }
 
@@ -21,5 +23,9 @@ public class ApduPackage implements Package {
     public int size() {
         return this.bytes.length;
     }
-}
 
+    @Override
+    public Package getRest() {
+        return new DataPackage(Arrays.copyOfRange(this.bytes, index, this.bytes.length));
+    }
+}

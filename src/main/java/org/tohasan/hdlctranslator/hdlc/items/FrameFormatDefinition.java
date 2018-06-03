@@ -2,7 +2,9 @@ package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.Package;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
+
+import java.util.List;
 
 /**
  * FF (Frame Format - <формат кадра>) – 2 байта:
@@ -19,7 +21,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class FrameFormatDefinition extends HdlcItem {
+public class FrameFormatDefinition extends CommonItem {
     private final static byte MASK_IS_SEGMENTED = 0x08;
 
     private boolean isSegmented;
@@ -30,13 +32,15 @@ public class FrameFormatDefinition extends HdlcItem {
     }
 
     @Override
-    public void extract(Package pack) {
+    public List<Byte> extract(Package pack) {
         super.extract(pack);
 
         byte flags = getBytes().get(1);
         isSegmented = 0 < (flags & MASK_IS_SEGMENTED);
 
         frameSize = getBytes().get(0);
+
+        return getBytes();
     }
 
     @Override

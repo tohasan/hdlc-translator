@@ -1,7 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ObjectShortName – (2 байта), определяет короткое имя (Short Name) запрашиваемого объекта:
@@ -12,7 +12,7 @@ import org.tohasan.hdlctranslator.hdlc.HdlcItem;
  * date: 31.05.2018.
  */
 
-public class ShortName extends HdlcItem {
+public class ShortName extends CommonItem {
 
     public ShortName(Frame frame) {
         super(frame);

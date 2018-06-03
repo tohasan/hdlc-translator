@@ -1,8 +1,8 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.PackageItem;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
+import org.tohasan.hdlctranslator.common.entities.FrameItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 import java.util.List;
 
@@ -12,8 +12,7 @@ import java.util.List;
  * author: IgorKaSan
  * date: 01.06.2018.
  */
-
-public class AcseValue extends HdlcItem {
+public class AcseValue extends CommonItem {
 
     public AcseValue(Frame frame) {
         super(frame);
@@ -26,7 +25,7 @@ public class AcseValue extends HdlcItem {
 
     @Override
     public int size() {
-        List<PackageItem> items = this.frame.getItems();
+        List<FrameItem> items = this.frame.getItems();
         int previewIndex = items.indexOf(this) - 1;
         return (int) items.get(previewIndex).getBytes().get(0);
     }

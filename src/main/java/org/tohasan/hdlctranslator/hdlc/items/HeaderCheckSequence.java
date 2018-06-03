@@ -1,9 +1,9 @@
 package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.PackageItem;
+import org.tohasan.hdlctranslator.common.entities.FrameItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 import org.tohasan.hdlctranslator.hdlc.enums.ControlFieldType;
-import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 import java.util.Optional;
 
@@ -15,7 +15,7 @@ import java.util.Optional;
  * author: IgorKaSan
  * date: 09.03.2018.
  */
-public class HeaderCheckSequence extends HdlcItem {
+public class HeaderCheckSequence extends CommonItem {
 
     public HeaderCheckSequence(Frame frame) {
         super(frame);
@@ -28,7 +28,7 @@ public class HeaderCheckSequence extends HdlcItem {
 
     @Override
     public int size() {
-        Optional<PackageItem> controlFieldOptional = this.frame.getItems().stream()
+        Optional<FrameItem> controlFieldOptional = this.frame.getItems().stream()
             .filter(item -> item instanceof ControlField)
             .findFirst();
 
@@ -37,7 +37,7 @@ public class HeaderCheckSequence extends HdlcItem {
             return defaultSize;
         }
 
-        PackageItem controlField = controlFieldOptional.get();
+        FrameItem controlField = controlFieldOptional.get();
 
         return controlField.getBytes().get(0) != ControlFieldType.SNRM.getValue() ? defaultSize : 0;
     }

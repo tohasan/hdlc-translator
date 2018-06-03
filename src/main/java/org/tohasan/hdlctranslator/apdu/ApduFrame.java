@@ -1,33 +1,19 @@
 package org.tohasan.hdlctranslator.apdu;
 
-import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.PackageItem;
+import org.tohasan.hdlctranslator.apdu.items.ApduContent;
+import org.tohasan.hdlctranslator.apdu.items.ApduTypeField;
+import org.tohasan.hdlctranslator.apdu.items.Llc;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 
-public class ApduFrame implements Frame {
-    private List<PackageItem> items;
+public class ApduFrame extends CommonFrame {
 
-    ApduFrame() {
-        this.items = new ArrayList<>();
-    }
-
-    @Override
-    public List<PackageItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<PackageItem> items) {
-        this.items = items;
-    }
-
-    @Override
-    public String getDescription() {
-        return this.items.stream()
-                .filter(item -> !item.empty())
-                .map(PackageItem::getDescription)
-                .collect(Collectors.joining("\n"));
+    public ApduFrame() {
+        this.setItems(Arrays.asList(
+            new Llc(this),
+            new ApduTypeField(this),
+            new ApduContent(this)
+        ));
     }
 }
