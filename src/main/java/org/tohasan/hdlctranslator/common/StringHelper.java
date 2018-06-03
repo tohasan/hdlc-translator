@@ -29,4 +29,8 @@ public class StringHelper {
         }
         return data;
     }
+
+    public static char toHexChar(int hexVal) {
+        return hexVal >= 0 && hexVal <= 9 ? (char) (hexVal + 48) : (char) (65 + (hexVal - 10));
+    }
 }

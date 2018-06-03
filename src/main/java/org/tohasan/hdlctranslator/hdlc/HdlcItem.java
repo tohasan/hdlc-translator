@@ -1,6 +1,6 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.common.Postprocessor;
+import org.tohasan.hdlctranslator.common.StringHelper;
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.Package;
 import org.tohasan.hdlctranslator.entities.PackageItem;
@@ -40,8 +40,8 @@ public abstract class HdlcItem implements PackageItem {
         StringBuilder description = new StringBuilder();
 
         for (int i = bytes.size() - 1; i >= 0; i--) {
-            description.append(Postprocessor.toHexChar(bytes.get(i) >>> 4 & 15));
-            description.append(Postprocessor.toHexChar(bytes.get(i) & 15));
+            description.append(StringHelper.toHexChar(bytes.get(i) >>> 4 & 15));
+            description.append(StringHelper.toHexChar(bytes.get(i) & 15));
         }
 
         return !this.empty() ? String.format("%s - %s", description.toString(), this.getDescriptionTip()) : "";

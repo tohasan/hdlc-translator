@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.hdlc;
+package org.tohasan.hdlctranslator.apdu;
 
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.PackageItem;

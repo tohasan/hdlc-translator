@@ -1,24 +1,24 @@
-package org.tohasan.hdlctranslator.hdlc.items;
+package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
- * DataBlockLength – (1 байт), специфицирует длину блока данных в байтах.
+ * ItemNumber – (1 байт), специфицирует номер элемента данных в последовательности.
  *
  * author: IgorKaSan
  * date: 31.05.2018.
  */
 
-public class DataBlockLength extends HdlcItem {
+public class ItemNumber extends HdlcItem {
 
-    public DataBlockLength(Frame frame) {
+    public ItemNumber(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "длина блока данных в байтах (DataBlockLength) - " +  Integer.toString(getValue());
+        return "номер элемента данных в последовательности (ItemNumber) - " +  Integer.toString(getValue());
     }
 
     @Override

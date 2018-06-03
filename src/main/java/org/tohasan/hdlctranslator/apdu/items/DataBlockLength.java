@@ -1,24 +1,24 @@
-package org.tohasan.hdlctranslator.hdlc.items;
+package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
- * Quantity – (1 байт), специфицирует количество элементов указанных в APDU кадре (блоке).
+ * DataBlockLength – (1 байт), специфицирует длину блока данных в байтах.
  *
  * author: IgorKaSan
  * date: 31.05.2018.
  */
 
-public class Quantity extends HdlcItem {
+public class DataBlockLength extends HdlcItem {
 
-    public Quantity(Frame frame) {
+    public DataBlockLength(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "количество элементов в последовательности (Quantity) - " +  Integer.toString(getValue());
+        return "длина блока данных в байтах (DataBlockLength) - " +  Integer.toString(getValue());
     }
 
     @Override

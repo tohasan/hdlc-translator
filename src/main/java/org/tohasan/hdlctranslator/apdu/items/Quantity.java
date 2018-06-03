@@ -1,24 +1,24 @@
-package org.tohasan.hdlctranslator.hdlc.items;
+package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.hdlc.HdlcItem;
 
 /**
- * ItemNumber – (1 байт), специфицирует номер элемента данных в последовательности.
+ * Quantity – (1 байт), специфицирует количество элементов указанных в APDU кадре (блоке).
  *
  * author: IgorKaSan
  * date: 31.05.2018.
  */
 
-public class ItemNumber extends HdlcItem {
+public class Quantity extends HdlcItem {
 
-    public ItemNumber(Frame frame) {
+    public Quantity(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "номер элемента данных в последовательности (ItemNumber) - " +  Integer.toString(getValue());
+        return "количество элементов в последовательности (Quantity) - " +  Integer.toString(getValue());
     }
 
     @Override

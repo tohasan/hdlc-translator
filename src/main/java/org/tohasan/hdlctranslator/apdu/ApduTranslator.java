@@ -1,8 +1,9 @@
-package org.tohasan.hdlctranslator.hdlc;
+package org.tohasan.hdlctranslator.apdu;
 
+import org.tohasan.hdlctranslator.apdu.items.LLC;
+import org.tohasan.hdlctranslator.apdu.items.RawData;
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.PackageItem;
-import org.tohasan.hdlctranslator.hdlc.items.*;
 
 import java.util.Arrays;
 

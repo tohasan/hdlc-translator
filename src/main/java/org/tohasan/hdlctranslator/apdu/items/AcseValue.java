@@ -1,4 +1,4 @@
-package org.tohasan.hdlctranslator.hdlc.items;
+package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.entities.Frame;
 import org.tohasan.hdlctranslator.entities.PackageItem;
@@ -28,7 +28,6 @@ public class AcseValue extends HdlcItem {
     public int size() {
         List<PackageItem> items = this.frame.getItems();
         int previewIndex = items.indexOf(this) - 1;
-        int currentFieldSize = items.get(previewIndex).getBytes().get(0);
-        return currentFieldSize;
+        return (int) items.get(previewIndex).getBytes().get(0);
     }
 }
