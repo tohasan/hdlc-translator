@@ -4,16 +4,16 @@ import org.tohasan.hdlctranslator.common.entities.Frame
 import spock.lang.Specification
 
 class ApduFrameSpec extends Specification {
-    Frame apduFrame
+    Frame frame
 
     def setup() {
-        apduFrame = new ApduFrame()
+        frame = new ApduFrame()
     }
 
     //	Logical Device Name readout (SN request)
     def "should parse simple READ_REQUEST apdu package"() {
         given:
-        def result = apduFrame.parse('E6 E6 00 05 01 02 FD 08')
+        def result = frame.parse('E6 E6 00 05 01 02 FD 08')
 
         expect:
         result ==
@@ -27,7 +27,7 @@ class ApduFrameSpec extends Specification {
     // 	Logical Device Name readout (SN response)
     def "should parse simple READ_RESPONSE apdu package"() {
         given:
-        def result = apduFrame.parse('E6 E7 00 0C 01 02 01 00 01 0F 01 00 0A 0B 5A 49 50 30 31 37 36 39 33 32 36')
+        def result = frame.parse('E6 E7 00 0C 01 02 01 00 01 0F 01 00 0A 0B 5A 49 50 30 31 37 36 39 33 32 36')
 
         expect:
         result ==
@@ -48,7 +48,7 @@ class ApduFrameSpec extends Specification {
     // 	AA using lowest security level (response)
     def "should parse simple AARQ - lowest security level"() {
         given:
-        def result = apduFrame.parse('E6 E6 00 60 1D A1 09 06 07 60 85 74 05 08 01 02 BE 10 04 0E 01 00 00 00 06 5F 1F 04 00 1C 03 20 00 00')
+        def result = frame.parse('E6 E6 00 60 1D A1 09 06 07 60 85 74 05 08 01 02 BE 10 04 0E 01 00 00 00 06 5F 1F 04 00 1C 03 20 00 00')
 
         expect:
         result ==
@@ -70,7 +70,7 @@ class ApduFrameSpec extends Specification {
     // 	AA using low level authentication (LLS) with blank password (response)
     def "should parse simple AARQ - low level authentication with blank password"() {
         given:
-        def result = apduFrame.parse('E6 E6 00 60 3A A1 09 06 07 60 85 74 05 08 01 02 A6 0A 04 08 45 47 4D 36 39 33 32 36 8A 02 07 80 8B 07 60 85 74 05 08 02 01 AC 02 80 00 BE 10 04 0E 01 00 00 00 06 5F 1F 04 00 1C 1B 20 00 00')
+        def result = frame.parse('E6 E6 00 60 3A A1 09 06 07 60 85 74 05 08 01 02 A6 0A 04 08 45 47 4D 36 39 33 32 36 8A 02 07 80 8B 07 60 85 74 05 08 02 01 AC 02 80 00 BE 10 04 0E 01 00 00 00 06 5F 1F 04 00 1C 1B 20 00 00')
 
         expect:
         result ==
@@ -107,7 +107,7 @@ class ApduFrameSpec extends Specification {
 
     def "should parse AssociationLN request (logical name access)"() {
         given:
-        def result =  apduFrame.parse('E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 02 00')
+        def result =  frame.parse('E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 02 00')
 
         expect:
         result ==
@@ -123,7 +123,7 @@ class ApduFrameSpec extends Specification {
 
     def "should parse AssociationLN response (logical name access)"() {
         given:
-        def result =  apduFrame.parse('E6 E7 00 C4 02 C1 00 00 00 00 01 00 02 01 50')
+        def result =  frame.parse('E6 E7 00 C4 02 C1 00 00 00 00 01 00 02 01 50')
 
         expect:
         result ==

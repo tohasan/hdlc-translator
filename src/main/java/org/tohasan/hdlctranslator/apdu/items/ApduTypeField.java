@@ -18,14 +18,14 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  * date: 31.05.2018.
  */
 public class ApduTypeField extends CommonItem {
-    final static int READ_REQUEST = 0x05;
-    final static int READ_RESPONSE = 0x0C;
-    final static int WRITE_REQUEST = 0x06;
-    final static int WRITE_RESPONSE = 0x0D;
-    final static int APPLICATION_ASSOCIATION_REQUEST = 0x60;
-    final static int APPLICATION_ASSOCIATION_RESPONSE = 0x61;
-    final static int GET_REQUEST = 0xC0;
-    final static int GET_RESPONSE = 0xC4;
+    final static byte READ_REQUEST = 0x05;
+    final static byte READ_RESPONSE = 0x0C;
+    final static byte WRITE_REQUEST = 0x06;
+    final static byte WRITE_RESPONSE = 0x0D;
+    final static byte APPLICATION_ASSOCIATION_REQUEST = 0x60;
+    final static byte APPLICATION_ASSOCIATION_RESPONSE = 0x61;
+    final static byte GET_REQUEST = (byte) 0xC0;
+    final static byte GET_RESPONSE = (byte) 0xC4;
 
     public ApduTypeField(Frame frame) {
         super(frame);

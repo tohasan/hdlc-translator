@@ -3,21 +3,18 @@ package org.tohasan.hdlctranslator.apdu.items;
 import org.tohasan.hdlctranslator.apdu.*;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
-import org.tohasan.hdlctranslator.common.entities.Package;
-import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
+import org.tohasan.hdlctranslator.common.entities.impl.FrameField;
 
-import java.util.List;
 import java.util.Optional;
 
-public class ApduContent extends CommonItem {
-    private Frame apduContent;
+public class ApduContent extends FrameField {
 
     public ApduContent(Frame frame) {
         super(frame);
     }
 
     @Override
-    public List<Byte> extract(Package pack) {
+    protected Frame initNestedFrame() {
         Optional<FrameItem> apduTypeOptional = this.frame.getItems().stream()
             .filter(item -> item instanceof ApduTypeField)
             .findFirst();
@@ -28,48 +25,20 @@ public class ApduContent extends CommonItem {
 
         FrameItem apduType = apduTypeOptional.get();
 
-        getBytes().clear();
-
-        switch (apduType.getBytes().get(0) & 255) { // & 255 исправляет отрицательное число, возвращаемое getBytes() в ситуации подобной 0xC0
+        switch (apduType.getBytes().get(0)) {
             case ApduTypeField.READ_REQUEST:
-                this.apduContent = new ApduReadRequest();
-                break;
+                return new ApduReadRequest();
             case ApduTypeField.READ_RESPONSE:
-                this.apduContent = new ApduReadResponse();
-                break;
+                return new ApduReadResponse();
             case ApduTypeField.APPLICATION_ASSOCIATION_REQUEST:
-                this.apduContent = new ApduAssosiationRequest();
-                break;
+                return new ApduAssosiationRequest();
             case ApduTypeField.GET_REQUEST:
-                this.apduContent = new ApduGetRequest();
-                break;
+                return new ApduGetRequest();
             case ApduTypeField.GET_RESPONSE:
-                this.apduContent = new ApduGetResponse();
-                break;
+                return new ApduGetResponse();
             default:
-                this.apduContent = null;
                 System.out.println("WARN Unsupported apdu type");
+                return null;
         }
-
-        if (this.apduContent != null) {
-            getBytes().addAll(this.apduContent.extract(pack));
-        }
-
-        return getBytes();
-    }
-
-    @Override
-    public String getDescription() {
-        return this.apduContent != null && !this.empty() ? this.apduContent.getDescription() : "";
-    }
-
-    @Override
-    protected String getDescriptionTip() {
-        return "";
-    }
-
-    @Override
-    public int size() {
-        return getBytes().size();
     }
 }

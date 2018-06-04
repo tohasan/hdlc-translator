@@ -8,6 +8,4 @@ public interface Package {
     byte nextByte();
 
     int size();
-
-    Package getRest();
 }

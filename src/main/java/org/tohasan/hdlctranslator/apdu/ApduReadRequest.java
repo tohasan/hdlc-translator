@@ -2,6 +2,7 @@ package org.tohasan.hdlctranslator.apdu;
 
 import org.tohasan.hdlctranslator.apdu.items.*;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
+import org.tohasan.hdlctranslator.common.entities.impl.RawData;
 
 import java.util.Arrays;
 

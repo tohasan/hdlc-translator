@@ -2,7 +2,7 @@ package org.tohasan.hdlctranslator.common.entities.impl;
 
 import org.tohasan.hdlctranslator.common.entities.Package;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class DataPackage implements Package {
     private byte[] bytes;
@@ -10,6 +10,14 @@ public class DataPackage implements Package {
 
     public DataPackage(byte[] bytes) {
         this.bytes = bytes;
+    }
+
+    DataPackage(List<Byte> bytes) {
+        this.bytes = new byte[bytes.size()];
+
+        for (int i = 0; i < bytes.size(); i++) {
+            this.bytes[i] = bytes.get(i);
+        }
     }
 
     @Override
@@ -22,10 +30,5 @@ public class DataPackage implements Package {
     @Override
     public int size() {
         return this.bytes.length;
-    }
-
-    @Override
-    public Package getRest() {
-        return new DataPackage(Arrays.copyOfRange(this.bytes, index, this.bytes.length));
     }
 }
