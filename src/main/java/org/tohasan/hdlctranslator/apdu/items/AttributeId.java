@@ -4,26 +4,26 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
- * BlockNumber – (2 байта), определяет номер блока данных:
+ * AttributeId – (1 байт), определяет идентификатор атрибута объекта.
  *
  * author: IgorKaSan
- * date: 31.05.2018.
+ * date: 04.05.2018.
  */
 
-public class BlockNumber extends CommonItem {
+public class AttributeId extends CommonItem {
 
-    public BlockNumber(Frame frame) {
+    public AttributeId(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
+        return "идентификатор атрибута - 0x" +  Integer.toString(getValue());
     }
 
     @Override
     public int size() {
-        return 2;
+        return 1;
     }
 
     private int getValue() {

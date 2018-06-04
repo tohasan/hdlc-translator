@@ -1,8 +1,6 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
-import org.tohasan.hdlctranslator.apdu.ApduAssosiationRequest;
-import org.tohasan.hdlctranslator.apdu.ApduReadRequest;
-import org.tohasan.hdlctranslator.apdu.ApduReadResponse;
+import org.tohasan.hdlctranslator.apdu.*;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
 import org.tohasan.hdlctranslator.common.entities.Package;
@@ -32,7 +30,7 @@ public class ApduContent extends CommonItem {
 
         getBytes().clear();
 
-        switch (apduType.getBytes().get(0)) {
+        switch (apduType.getBytes().get(0) & 255) { // & 255 исправляет отрицательное число, возвращаемое getBytes() в ситуации подобной 0xC0
             case ApduTypeField.READ_REQUEST:
                 this.apduContent = new ApduReadRequest();
                 break;
@@ -41,6 +39,12 @@ public class ApduContent extends CommonItem {
                 break;
             case ApduTypeField.APPLICATION_ASSOCIATION_REQUEST:
                 this.apduContent = new ApduAssosiationRequest();
+                break;
+            case ApduTypeField.GET_REQUEST:
+                this.apduContent = new ApduGetRequest();
+                break;
+            case ApduTypeField.GET_RESPONSE:
+                this.apduContent = new ApduGetResponse();
                 break;
             default:
                 this.apduContent = null;

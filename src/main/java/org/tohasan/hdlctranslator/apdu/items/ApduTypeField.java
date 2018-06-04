@@ -42,6 +42,6 @@ public class ApduTypeField extends CommonItem {
     }
 
     private int getValue() {
-        return super.getBytes().get(0);
+        return super.getBytes().get(0) & 255;   // & 255 исправляет отрицательное число, возвращаемое getBytes()
     }
 }

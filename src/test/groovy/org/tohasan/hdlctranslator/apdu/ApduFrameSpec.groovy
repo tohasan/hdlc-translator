@@ -104,4 +104,37 @@ class ApduFrameSpec extends Specification {
                 '0E - длина значения элемента службы управления ассоциацией в байтах (ACSE Data Length) - 14\n' +
                 '01000000065F1F04001C1B200000 - значения элемента службы управления ассоциацией (ACSE Value)'
     }
+
+    def "should parse AssociationLN request (logical name access)"() {
+        given:
+        def result =  apduFrame.parse('E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 02 00')
+
+        expect:
+        result ==
+                'E6E600 - логическое управление каналом (logical link control)\n' +
+                'C0 - тип APDU пакета (APDU type) APDU[192]\n' +
+                '01 - тип GetRequest GR[1]\n' +
+                'C1 - тип GetRequestNormal GRN[-63]\n' +
+                '000F - идентификатор родительского класса - 0x15\n' +
+                '0000280000FF - идентификатор объекта (OBIS код) - 0x-1\n' +
+                '02 - идентификатор атрибута - 0x2\n' +
+                '00 - флаг завершения описания атрибута - 0x0'
+    }
+
+    def "should parse AssociationLN response (logical name access)"() {
+        given:
+        def result =  apduFrame.parse('E6 E7 00 C4 02 C1 00 00 00 00 01 00 02 01 50')
+
+        expect:
+        result ==
+                'E6E700 - логическое управление каналом (logical link control)\n' +
+                'C4 - тип APDU пакета (APDU type) APDU[196]\n' +
+                '02 - тип GetRequest GR[2]\n' +
+                'C1 - тип GetRequestNormal GRN[-63]\n' +
+                '00 - признак последнего блока (LastBlock flag)\n' +
+                '00000001 - номер блока данных (BlockNumber) - 1\n' +
+                '00 - значение диагностики источника результата (0x00 - success)\n' +
+                '02 - длина блока данных в байтах (DataBlockLength) - 2\n' +
+                '0150 - неразобранные данные (raw data)'
+    }
 }

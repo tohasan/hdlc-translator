@@ -4,26 +4,26 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
- * BlockNumber – (2 байта), определяет номер блока данных:
+ * ObjectID – (6 байт), определяет идентификатор объекта (ОБИС код).
  *
  * author: IgorKaSan
- * date: 31.05.2018.
+ * date: 04.05.2018.
  */
 
-public class BlockNumber extends CommonItem {
+public class ObjectID extends CommonItem {
 
-    public BlockNumber(Frame frame) {
+    public ObjectID(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
+        return "идентификатор объекта (OBIS код) - 0x" +  Integer.toString(getValue());
     }
 
     @Override
     public int size() {
-        return 2;
+        return 6;
     }
 
     private int getValue() {

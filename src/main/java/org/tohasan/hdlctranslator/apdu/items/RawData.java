@@ -6,6 +6,7 @@ import org.tohasan.hdlctranslator.common.entities.FrameItem;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Неразобранные данные (технологическое поле).

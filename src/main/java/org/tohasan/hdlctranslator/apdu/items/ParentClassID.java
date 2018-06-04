@@ -4,21 +4,21 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
- * BlockNumber – (2 байта), определяет номер блока данных:
+ * ParentClassID – (2 байта), определяет идентификатор родительского класса.
  *
  * author: IgorKaSan
- * date: 31.05.2018.
+ * date: 04.05.2018.
  */
 
-public class BlockNumber extends CommonItem {
+public class ParentClassID extends CommonItem {
 
-    public BlockNumber(Frame frame) {
+    public ParentClassID(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
+        return "идентификатор родительского класса - 0x" +  Integer.toString(getValue());
     }
 
     @Override

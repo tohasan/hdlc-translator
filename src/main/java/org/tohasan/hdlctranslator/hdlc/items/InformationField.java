@@ -19,6 +19,8 @@ public class InformationField extends CommonItem {
 
     public InformationField(Frame frame) {
         super(frame);
+        // создается даже если нет APDU (UA) и даже если нет информационного поля (SNRM), а не должно!!
+        // соответственно не проходят тесты "should parse hdlc package without header checksum field" и "should parse hdlc package with header checksum field"
         this.apduFrame = new ApduFrame();
     }
 
