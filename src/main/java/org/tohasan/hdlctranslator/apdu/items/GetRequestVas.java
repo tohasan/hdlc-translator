@@ -11,8 +11,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  *
  * author: IgorKaSan
  * date: 04.05.2018.
- */
-
+*/
 public class GetRequestVas extends CommonItem {
     final static int INVOKE_ID_AND_PRIORITY =0x01;
     final static int COSEM_ATTRIBUTE_DESCRIPTION =0x02;

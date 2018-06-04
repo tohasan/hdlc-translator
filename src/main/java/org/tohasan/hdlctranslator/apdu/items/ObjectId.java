@@ -8,8 +8,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  *
  * author: IgorKaSan
  * date: 04.05.2018.
- */
-
+*/
 public class ObjectId extends CommonItem {
 
     public ObjectId(Frame frame) {

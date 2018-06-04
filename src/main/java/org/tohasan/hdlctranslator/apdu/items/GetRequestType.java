@@ -11,8 +11,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  *
  * author: IgorKaSan
  * date: 04.05.2018.
- */
-
+*/
 public class GetRequestType extends CommonItem {
     final static int GET_REQUEST_NORMAL =0x01;
     final static int GET_REQUEST_NEXT =0x02;

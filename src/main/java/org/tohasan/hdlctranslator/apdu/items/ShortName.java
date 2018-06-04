@@ -10,8 +10,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  *
  * author: IgorKaSan
  * date: 31.05.2018.
- */
-
+*/
 public class ShortName extends CommonItem {
 
     public ShortName(Frame frame) {

@@ -8,8 +8,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  *
  * author: IgorKaSan
  * date: 31.05.2018.
- */
-
+*/
 public class BlockNumber extends CommonItem {
 
     public BlockNumber(Frame frame) {

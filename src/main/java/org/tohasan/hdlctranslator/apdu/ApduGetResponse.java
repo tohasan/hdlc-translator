@@ -11,8 +11,7 @@ import java.util.Arrays;
  *
  * author: IgorKaSan
  * date: 04.05.2018.
- */
-
+*/
 public class ApduGetResponse extends CommonFrame {
 
     public ApduGetResponse() {
