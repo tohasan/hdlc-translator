@@ -34,7 +34,7 @@ public abstract class FrameField extends RawData {
 
     @Override
     public String getDescription() {
-        return !this.empty() ? nestedFrame.getDescription() : "";
+        return !this.empty() && nestedFrame != null ? nestedFrame.getDescription() : "";
     }
 
     @Override

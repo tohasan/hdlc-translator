@@ -42,6 +42,32 @@ class HdlcFrameSpec extends Specification {
                 '7E - разделитель кадров (frame delimiter)'
     }
 
+    def "should correct parse package by package"() {
+        given:
+        hdlcFrame.parse('7E A0 1A 02 57 21 32 4F 91 E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 02 00 91 53 7E')
+        def result = hdlcFrame.parse('7E A0 19 21 02 57 52 51 5B E6 E7 00 C4 02 C1 00 00 00 00 01 00 02 01 50 99 F4 7E')
+
+        expect:
+        result ==
+                '7E - разделитель кадров (frame delimiter)\n' +
+                'A019 - определение формата кадра (frame format) - несегментированный кадр - длина кадра: 25\n' +
+                '21 - адрес клиента (client address) = 16\n' +
+                '0257 - адрес сервера (server address) = 1:43 - логический адрес сервера (upper part server address):физический адрес сервера (lower part setver address)\n' +
+                '52 - управляющее поле (control field)\n' +
+                '515B - код целостности заголовка (header check sequence)\n' +
+                'E6E700 - логическое управление каналом (logical link control)\n' +
+                'C4 - тип APDU пакета (APDU type) APDU[196]\n' +
+                '02 - тип GetRequest GR[2]\n' +
+                'C1 - тип GetRequestNormal GRN[-63]\n' +
+                '00 - признак последнего блока (LastBlock flag)\n' +
+                '00000001 - номер блока данных (BlockNumber) - 1\n' +
+                '00 - значение диагностики источника результата (0x00 - success)\n' +
+                '02 - длина блока данных в байтах (DataBlockLength) - 2\n' +
+                '0150 - неразобранные данные (raw data)\n' +
+                '99F4 - код целостности кадра (frame check sequence)\n' +
+                '7E - разделитель кадров (frame delimiter)'
+    }
+
     //	Logical Device Name readout (SN request)
     def "should parse simple READ_REQUEST apdu package"() {
         given:

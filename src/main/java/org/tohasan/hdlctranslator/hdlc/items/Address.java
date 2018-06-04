@@ -54,6 +54,8 @@ public class Address extends CommonItem {
 
     @Override
     public List<Byte> extract(Package pack) {
+        getBytes().clear();
+
         byte addressPart;
         do {
             addressPart = pack.nextByte();
