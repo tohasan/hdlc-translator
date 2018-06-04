@@ -4,26 +4,26 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
- * ObjectID – (6 байт), определяет идентификатор объекта (ОБИС код).
+ * ParentClassId – (2 байта), определяет идентификатор родительского класса.
  *
  * author: IgorKaSan
  * date: 04.05.2018.
  */
 
-public class ObjectID extends CommonItem {
+public class ParentClassId extends CommonItem {
 
-    public ObjectID(Frame frame) {
+    public ParentClassId(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "идентификатор объекта (OBIS код) - 0x" +  Integer.toString(getValue());
+        return "идентификатор родительского класса - 0x" +  Integer.toString(getValue());
     }
 
     @Override
     public int size() {
-        return 6;
+        return 2;
     }
 
     private int getValue() {

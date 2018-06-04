@@ -19,8 +19,8 @@ public class ApduGetRequest extends CommonFrame {
         this.setItems(Arrays.asList(
                 new GetRequestType(this),
                 new GetRequestVas(this),
-                new ParentClassID(this),
-                new ObjectID(this),
+                new ParentClassId(this),
+                new ObjectId(this),
                 new AttributeId(this),
                 new AttributeDescriptor(this),
                 new RawData(this)
