@@ -1,12 +1,9 @@
 package org.tohasan.hdlctranslator.hdlc;
 
-import org.tohasan.hdlctranslator.common.entities.FrameItem;
-import org.tohasan.hdlctranslator.common.entities.Package;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
 import org.tohasan.hdlctranslator.hdlc.items.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Структура HDLC пакета (сообщения):

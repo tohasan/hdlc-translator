@@ -24,8 +24,4 @@ public class ItemNumber extends CommonItem {
     public int size() {
         return 1;
     }
-
-    private int getValue() {
-        return super.getBytes().get(0);
-    }
 }

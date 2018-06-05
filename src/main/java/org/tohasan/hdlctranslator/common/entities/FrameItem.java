@@ -17,4 +17,6 @@ public interface FrameItem {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean empty();
+
+    int getValue();
 }

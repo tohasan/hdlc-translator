@@ -17,7 +17,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  */
 public class Vas extends CommonItem {
 
-    public Vas(Frame frame) {
+    Vas(Frame frame) {
         super(frame);
     }
 
@@ -29,9 +29,5 @@ public class Vas extends CommonItem {
     @Override
     public int size() {
         return 1;
-    }
-
-    private int getValue() {
-        return super.getBytes().get(0);
     }
 }

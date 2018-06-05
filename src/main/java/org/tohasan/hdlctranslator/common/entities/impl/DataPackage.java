@@ -28,6 +28,11 @@ public class DataPackage implements Package {
     }
 
     @Override
+    public boolean hasNext() {
+        return index < this.bytes.length;
+    }
+
+    @Override
     public int size() {
         return this.bytes.length;
     }

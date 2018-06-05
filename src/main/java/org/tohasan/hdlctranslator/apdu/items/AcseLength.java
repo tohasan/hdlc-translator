@@ -11,7 +11,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  */
 public class AcseLength extends CommonItem {
 
-    public AcseLength(Frame frame) {
+    AcseLength(Frame frame) {
         super(frame);
     }
 
@@ -23,9 +23,5 @@ public class AcseLength extends CommonItem {
     @Override
     public int size() {
         return 1;
-    }
-
-    private int getValue() {
-        return super.getBytes().get(0);
     }
 }

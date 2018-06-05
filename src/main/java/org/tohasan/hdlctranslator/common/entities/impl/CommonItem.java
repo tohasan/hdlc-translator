@@ -48,4 +48,10 @@ public abstract class CommonItem implements FrameItem {
     public boolean empty() {
         return bytes.size() == 0;
     }
+
+    @Override
+    public int getValue() {
+        // TODO: Нужно формировать полное число, а не просто один байт
+        return this.getBytes().get(0);
+    }
 }

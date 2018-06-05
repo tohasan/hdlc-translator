@@ -7,5 +7,7 @@ package org.tohasan.hdlctranslator.common.entities;
 public interface Package {
     byte nextByte();
 
+    boolean hasNext();
+
     int size();
 }

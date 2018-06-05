@@ -4,6 +4,8 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
 import org.tohasan.hdlctranslator.common.entities.Package;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -38,6 +40,12 @@ public class RawData extends CommonItem {
         }
 
         return getBytes();
+    }
+
+    List<Byte> revertBytes(List<Byte> bytes) {
+        List<Byte> bytesReverted = new ArrayList<>(bytes);
+        Collections.reverse(bytesReverted);
+        return bytesReverted;
     }
 
     @Override

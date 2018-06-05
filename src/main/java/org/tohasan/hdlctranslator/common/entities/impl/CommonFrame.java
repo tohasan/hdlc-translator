@@ -4,6 +4,7 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.Package;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
 import org.tohasan.hdlctranslator.common.utils.StringHelper;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,5 +69,10 @@ public abstract class CommonFrame implements Frame {
     @Override
     public boolean empty() {
         return this.items.isEmpty();
+    }
+
+    @Override
+    public int getValue() {
+        throw new NotImplementedException();
     }
 }

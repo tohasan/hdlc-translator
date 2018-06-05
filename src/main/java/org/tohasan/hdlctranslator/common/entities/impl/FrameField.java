@@ -1,6 +1,5 @@
 package org.tohasan.hdlctranslator.common.entities.impl;
 
-import org.tohasan.hdlctranslator.apdu.ApduFrame;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.Package;
 
@@ -35,15 +34,5 @@ public abstract class FrameField extends RawData {
     @Override
     public String getDescription() {
         return !this.empty() && nestedFrame != null ? nestedFrame.getDescription() : "";
-    }
-
-    @Override
-    protected String getDescriptionTip() {
-        return "";
-    }
-
-    @Override
-    public int size() {
-        return getBytes().size();
     }
 }

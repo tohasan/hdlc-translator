@@ -1,32 +1,18 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
-import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
 
-/**
- * ACSE Tag – (1 байт), специфицирует ACSE (Association Control Service Element - Элемент Службы Управления Ассоциацией).
- *  AARQ/AARE (Application Association Request/Response) перечисление
- *
- * author: IgorKaSan
- * date: 01.06.2018.
- */
-public class AcseTag extends CommonItem {
+import java.util.Arrays;
 
-    public AcseTag(Frame frame) {
-        super(frame);
-    }
+public class AcseTag extends CommonFrame {
 
-    @Override
-    protected String getDescriptionTip() {
-        return "тег элемента управления ассоциацией (ACSE Tag) - [" +  Integer.toString(getValue()) + "]";
-    }
-
-    @Override
-    public int size() {
-        return 1;
-    }
-
-    private int getValue() {
-        return super.getBytes().get(0) & 255; // & 255 исправляет отрицательное число, возвращаемое getBytes()
+    public AcseTag() {
+        this.setItems(Arrays.asList(
+            new AcseTagName(this),
+            new AcseLength(this),
+            new AcseDataType(this),
+            new AcseDataLength(this),
+            new AcseValue(this)
+        ));
     }
 }

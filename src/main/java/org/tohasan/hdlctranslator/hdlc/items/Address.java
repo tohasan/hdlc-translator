@@ -68,10 +68,10 @@ public class Address extends CommonItem {
     @Override
     protected String getDescriptionTip() {
         if (this.isClient()) {
-            return "адрес клиента (client address) = " + getValue();
+            return "адрес клиента (client address) = " + getParsedValue();
         }
 
-        return "адрес сервера (server address) = " + getValue() +
+        return "адрес сервера (server address) = " + getParsedValue() +
             " - логический адрес сервера (upper part server address):физический адрес сервера (lower part setver address)";
     }
 
@@ -80,7 +80,7 @@ public class Address extends CommonItem {
         return getBytes().size();
     }
 
-    private String getValue() {
+    private String getParsedValue() {
         switch (this.getBytes().size()) {
             case ONE_BYTE_ADDRESS:
                 upperPart = super.getBytes().get(0) >> 1 & MASK_SIGN_REMOVE;

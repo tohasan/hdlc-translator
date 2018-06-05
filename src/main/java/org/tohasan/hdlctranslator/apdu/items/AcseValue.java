@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class AcseValue extends CommonItem {
 
-    public AcseValue(Frame frame) {
+    AcseValue(Frame frame) {
         super(frame);
     }
 
@@ -27,6 +27,6 @@ public class AcseValue extends CommonItem {
     public int size() {
         List<FrameItem> items = this.frame.getItems();
         int previewIndex = items.indexOf(this) - 1;
-        return (int) items.get(previewIndex).getBytes().get(0);
+        return items.get(previewIndex).getValue();
     }
 }

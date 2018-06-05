@@ -2,7 +2,6 @@ package org.tohasan.hdlctranslator.hdlc.items;
 
 import org.tohasan.hdlctranslator.apdu.ApduFrame;
 import org.tohasan.hdlctranslator.common.entities.Frame;
-import org.tohasan.hdlctranslator.common.entities.Package;
 import org.tohasan.hdlctranslator.common.entities.impl.FrameField;
 
 /**
