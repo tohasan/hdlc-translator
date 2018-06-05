@@ -6,10 +6,16 @@ import org.tohasan.hdlctranslator.common.entities.impl.RawData;
 
 import java.util.Arrays;
 
-public class ApduAssosiationRequest extends CommonFrame {
+/**
+ * Application Assosiation Request – запрос ассоциации приложения с применением самого низкого уровня безопасности
+ *
+ * author: IgorKaSan
+ * date: 04.05.2018.
+ */
+public class ApplicationAssosiationRequest extends CommonFrame {
 
-    public ApduAssosiationRequest() {
-        // Lowest security level
+    public ApplicationAssosiationRequest() {
+        // Lowest security level – запрос ассоциации приложения с применением самого низкого уровня безопасности
 
         this.setItems(Arrays.asList(
             new AarqLength(this),  // для запроса ассоциации приложения

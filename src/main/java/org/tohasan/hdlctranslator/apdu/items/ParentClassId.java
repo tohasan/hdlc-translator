@@ -3,6 +3,8 @@ package org.tohasan.hdlctranslator.apdu.items;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
+import java.math.BigInteger;
+
 /**
  * ParentClassId – (2 байта), определяет идентификатор родительского класса.
  *
@@ -26,6 +28,10 @@ public class ParentClassId extends CommonItem {
     }
 
     private int getValue() {
-        return super.getBytes().get(0);
+        int parentClassId;
+
+        parentClassId = super.getBytes().get(1) << 8 | super.getBytes().get(0);
+
+        return parentClassId;
     }
 }

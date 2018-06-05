@@ -11,8 +11,9 @@ public class ApduReadRequest extends CommonFrame {
     public ApduReadRequest() {
         this.setItems(Arrays.asList(
             new Quantity(this),
-            new Vas(this),
-            new ShortName(this),
+            new ArrayOfReadRequestElements(this),
+//            new Vas(this),
+//            new ShortName(this),
             new RawData(this)
         ));
     }

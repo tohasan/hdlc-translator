@@ -37,7 +37,13 @@ class HdlcFrameSpec extends Specification {
                 '00025075 - адрес сервера (server address) = 1:5178 - логический адрес сервера (upper part server address):физический адрес сервера (lower part setver address)\n' +
                 '73 - управляющее поле (control field)\n' +
                 '83C2 - код целостности заголовка (header check sequence)\n' +
-                '818006050180060180 - информационное поле (information field)\n' +
+//                '818006050180060180 - информационное поле (information field)\n' +
+                '818006 - логическое управление каналом (logical link control)\n' +
+                '05 - тип APDU пакета (APDU type) APDU[5]\n' +
+                '01 - количество элементов в последовательности (Quantity) - 1\n' +
+                '80 - тип переменной доступа (VAS type) VAS[-128]\n' +
+                '0601 - короткое имя запрашиваемого объекта (ShortName)\n' +
+                '80 - неразобранные данные (raw data)\n' +
                 '756C - код целостности кадра (frame check sequence)\n' +
                 '7E - разделитель кадров (frame delimiter)'
     }
