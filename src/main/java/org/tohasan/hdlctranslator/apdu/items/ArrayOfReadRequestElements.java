@@ -2,8 +2,11 @@ package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
+import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
 import org.tohasan.hdlctranslator.common.entities.impl.FrameField;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class ArrayOfReadRequestElements extends FrameField {
@@ -14,15 +17,15 @@ public class ArrayOfReadRequestElements extends FrameField {
 
     @Override
     protected Frame initNestedFrame() {
-        Optional<FrameItem> apduTypeOptional = this.frame.getItems().stream()
+        Optional<FrameItem> quantityOptional = this.frame.getItems().stream()
             .filter(item -> item instanceof Quantity)
             .findFirst();
 
-        if (!apduTypeOptional.isPresent()) {
+        if (!quantityOptional.isPresent()) {
             throw new RuntimeException("Incorrect package structure");
         }
 
-        FrameItem elementsQuantity = apduTypeOptional.get();
+        FrameItem elementsQuantity = quantityOptional.get();
 
 //        for (int i = 0; i < elementsQuantity.getBytes().get(0); i++) {
 //            ));
