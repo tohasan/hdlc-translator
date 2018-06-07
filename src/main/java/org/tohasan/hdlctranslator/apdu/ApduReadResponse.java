@@ -18,7 +18,7 @@ public class ApduReadResponse extends CommonFrame {
             new DataBlockLength(this),  // для ответа на запрос на чтение
             new Quantity(this),  // для ответа на запрос на чтение
             // конец заголовка блока (длина блока данных рассматривается в составе заголовка)
-//            new ResultDiagnosticFlag(this),  // для ответа на запрос на чтение
+            new ResultDiagnosticFlag(this),  // для ответа на запрос на чтение
 //            new ItemType(this),  // для ответа на запрос на чтение
 //            new ItemLength(this),  // для ответа на запрос на чтение
 //            new ItemValue(this),  // для ответа на запрос на чтение
