@@ -17,7 +17,7 @@ public class AttributeId extends CommonItem {
 
     @Override
     protected String getDescriptionTip() {
-        return "идентификатор атрибута - 0x" +  Integer.toString(getValue());
+        return "идентификатор атрибута - " +  Integer.toString(getValue());
     }
 
     @Override

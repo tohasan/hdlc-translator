@@ -29,21 +29,23 @@ public class ItemValue extends CommonItem {
     @Override
     public int size() {
         int valueSize = 0;
-        List<FrameItem> items = this.frame.getItems();
-        int previewIndex = items.indexOf(this) - 1;
-//        return items.get(previewIndex).getValue();
-//        return 11;
 
         if (!isByteString()) {
             Optional<FrameItem> typeOptional = this.frame.getItems().stream()
                     .filter(item -> item instanceof ItemType)
                     .findFirst();
             switch (typeOptional.get().getValue()) {
+                case 0:
+                    valueSize = 0;
+                    break;
                 case 1:
                     valueSize = 0;
                     break;
                 case 2:
                     valueSize = 0;
+                    break;
+                case 3:
+                    valueSize = 1;
                     break;
                 case 16:
                     valueSize = 2;
@@ -55,6 +57,9 @@ public class ItemValue extends CommonItem {
                     valueSize = 2;
                     break;
                 case 15:
+                    valueSize = 1;
+                    break;
+                case 22:
                     valueSize = 1;
                     break;
                 default:

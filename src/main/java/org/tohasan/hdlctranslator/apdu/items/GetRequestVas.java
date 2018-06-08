@@ -30,4 +30,9 @@ public class GetRequestVas extends CommonItem {
     public int size() {
         return 1;
     }
+
+    @Override
+    public int getValue() {
+        return super.getBytes().get(0) & 255;   // & 255 исправляет отрицательное число, возвращаемое getBytes()
+    }
 }

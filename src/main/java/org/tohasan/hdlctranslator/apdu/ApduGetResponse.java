@@ -2,7 +2,7 @@ package org.tohasan.hdlctranslator.apdu;
 
 import org.tohasan.hdlctranslator.apdu.items.*;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
-import org.tohasan.hdlctranslator.common.entities.impl.RawData;
+import org.tohasan.hdlctranslator.common.entities.impl.DynamicListField;
 
 import java.util.Arrays;
 
@@ -19,10 +19,10 @@ public class ApduGetResponse extends CommonFrame {
                 new GetRequestType(this),
                 new GetRequestVas(this),
                 new LastBlock(this),
-                new GetResponseBlockNumber(this),
+                new LongBlockNumber(this),
                 new ResultDiagnosticFlag(this),
                 new DataBlockLength(this),
-                new RawData(this)
+                new DynamicListField<>(this, ReadResponseElement.class)
         ));
     }
 }
