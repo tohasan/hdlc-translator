@@ -9,6 +9,7 @@ public class ReadRequestElement extends CommonFrame {
     public ReadRequestElement() {
         this.setItems(Arrays.asList(
                 new Vas(this),
+                new BlockNumber(this),
                 new ShortName(this)
         ));
     }

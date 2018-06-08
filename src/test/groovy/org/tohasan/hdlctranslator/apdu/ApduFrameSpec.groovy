@@ -270,6 +270,32 @@ class ApduFrameSpec extends Specification {
     }
 
     // Association SN readout
+    def "should parse AssociationSN READ_REQUEST apdu package"() {
+        given:
+        def result = frame.parse('E6 E6 00 05 01 02 FA 08')
+
+        expect:
+        result ==
+                'E6E600 - логическое управление каналом (logical link control)\n' +
+                '05 - тип APDU пакета (APDU type) APDU[5]\n' +
+                '01 - количество элементов в последовательности (Quantity) - 1\n' +
+                '02 - тип переменной доступа (VAS type) VAS[2]\n' +
+                'FA08 - короткое имя запрашиваемого объекта (ShortName)'
+    }
+
+    def "should parse AssociationSN READ_REQUEST apdu package block 2"() {
+        given:
+        def result = frame.parse('E6 E6 00 05 01 05 00 01')
+
+        expect:
+        result ==
+                'E6E600 - логическое управление каналом (logical link control)\n' +
+                '05 - тип APDU пакета (APDU type) APDU[5]\n' +
+                '01 - количество элементов в последовательности (Quantity) - 1\n' +
+                '05 - тип переменной доступа (VAS type) VAS[5]\n' +
+                '0001 - номер блока данных (BlockNumber) - 1'
+    }
+
     def "should parse AssociationSN READ_RESPONSE apdu package (long three bytes length field)"() {
         given:
         def result = frame.parse('E6 E7 00 0C 01 02 00 00 01 6C 01 00 01 82 01 4F 02 04 10 00 00 12 00 03 11 00 09 06 01 00 0F 08 00 FF 02 04 10 00 18 12 00 03 11 00 09 06 01 00 0F 08 01 FF 02 04 10 00 30 12 00 03 11 00 09 06 01 00 0F 08 02 FF 02 04 10 00 48 12 00 03 11 00 09 06 01 00 0F 08 03 FF 02 04 10 00 60 12 00 03 11 00 09 06 01 00 0F 08 04 FF 02 04 10 01 00 12 00 03 11 00 09 06')

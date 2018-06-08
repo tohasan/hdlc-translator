@@ -1,7 +1,11 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
+import org.tohasan.hdlctranslator.apdu.enums.VasType;
 import org.tohasan.hdlctranslator.common.entities.Frame;
+import org.tohasan.hdlctranslator.common.entities.FrameItem;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
+
+import java.util.Optional;
 
 /**
  * ObjectShortName – (2 байта), определяет короткое имя (Short Name) запрашиваемого объекта:
@@ -22,8 +26,22 @@ public class ShortName extends CommonItem {
         return "короткое имя запрашиваемого объекта (ShortName)";
     }
 
+//    @Override
+//    public int size() {
+//        return 2;
+//    }
+
     @Override
     public int size() {
-        return 2;
+        return !isBlockNumberAccess() ? 2 : 0;
+    }
+
+    // TODO: Убрать заточку на конкретное значение в типе. Обобщить это!
+    private boolean isBlockNumberAccess() {
+        Optional<FrameItem> blockNumberAccessOptional = this.frame.getItems().stream()
+                .filter(item -> item instanceof Vas)
+                .findFirst();
+
+        return blockNumberAccessOptional.isPresent() && (VasType.BLOCK_NUMBER_ACCESS.getValue() == blockNumberAccessOptional.get().getValue());
     }
 }
