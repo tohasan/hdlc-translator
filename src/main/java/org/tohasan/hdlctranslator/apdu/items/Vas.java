@@ -17,7 +17,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  */
 public class Vas extends CommonItem {
 
-    Vas(Frame frame) {
+    public Vas(Frame frame) {
         super(frame);
     }
 

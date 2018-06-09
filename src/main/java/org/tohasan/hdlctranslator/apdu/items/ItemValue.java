@@ -47,6 +47,9 @@ public class ItemValue extends CommonItem {
                 case 3:
                     valueSize = 1;
                     break;
+                case 6:
+                    valueSize = 4;
+                    break;
                 case 16:
                     valueSize = 2;
                     break;

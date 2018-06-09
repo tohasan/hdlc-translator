@@ -4,6 +4,7 @@ public enum DataType {
     ARRAY((byte) 0x01),
     STRUCTURE((byte) 0x02),
     BOOLEAN((byte) 0x03),
+    DOUBLE_LONG_UNSIGNED((byte) 0x06),
     OCTET_STRING((byte) 0x09),
     VISIBLE_STRING((byte) 0x0A),
     LONG((byte) 0x10),

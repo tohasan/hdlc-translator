@@ -36,6 +36,10 @@ public class ApduContent extends FrameField {
                 return new ApduReadRequest();
             case ApduTypeField.READ_RESPONSE:
                 return new ApduReadResponse();
+            case ApduTypeField.WRITE_REQUEST:
+                return new ApduWriteRequest();
+            case ApduTypeField.WRITE_RESPONSE:
+                return new ApduWriteResponse();
             case ApduTypeField.APPLICATION_ASSOCIATION_REQUEST:
                 return new ApplicationAssosiationRequest();
             case ApduTypeField.APPLICATION_ASSOCIATION_RESPONSE:

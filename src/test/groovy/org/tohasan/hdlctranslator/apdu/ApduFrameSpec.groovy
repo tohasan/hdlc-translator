@@ -805,4 +805,39 @@ class ApduFrameSpec extends Specification {
                 '09 - тип данных элемента данных в последовательности (ItemType) - DataType[9]\n' +
                 '06 - длина элемента данных в байтах (ItemLength) - 6'
     }
+
+    //	Write Request (SN request)
+    def "should parse simple WRITE_REQUEST apdu package"() {
+        given:
+        def result = frame.parse('E6 E6 00 06 01 02 F1 40 01 02 02 09 08 49 13 F7 79 5D 2B 80 12 06 00 00 00 F0')
+
+        expect:
+        result ==
+                'E6E600 - логическое управление каналом (logical link control)\n' +
+                '06 - тип APDU пакета (APDU type) APDU[6]\n' +
+                '01 - количество элементов в последовательности (Quantity) - 1\n' +
+                '02 - тип переменной доступа (VAS type) VAS[2]\n' +
+                'F140 - короткое имя запрашиваемого объекта (ShortName)\n' +
+                '01 - количество элементов в блоке данных (Quantity) - 1\n' +
+                '02 - тип данных элемента данных в последовательности (ItemType) - DataType[2]\n' +
+                '02 - длина элемента данных в байтах (ItemLength) - 2\n' +
+                '09 - тип данных элемента данных в последовательности (ItemType) - DataType[9]\n' +
+                '08 - длина элемента данных в байтах (ItemLength) - 8\n' +
+                '4913F7795D2B8012 - значение элемента данных в последовательности (ItemValue)\n' +
+                '06 - тип данных элемента данных в последовательности (ItemType) - DataType[6]\n' +
+                '000000F0 - значение элемента данных в последовательности (ItemValue)'
+    }
+
+    //	Write Response (SN request)
+    def "should parse simple WRITE_RESPONSE apdu package"() {
+        given:
+        def result = frame.parse('E6 E7 00 0D 01 00')
+
+        expect:
+        result ==
+                'E6E700 - логическое управление каналом (logical link control)\n' +
+                '0D - тип APDU пакета (APDU type) APDU[13]\n' +
+                '01 - количество элементов в последовательности (Quantity) - 1\n' +
+                '00 - значение диагностики источника результата (0x00 - success)'
+    }
 }
