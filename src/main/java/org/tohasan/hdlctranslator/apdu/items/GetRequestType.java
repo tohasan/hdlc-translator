@@ -5,9 +5,9 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * GetRequestType – (1 байт), определяет тип Get Request запоса:
- *  GetRequest[1] - GET_REQUEST_NORMAL
- *  GetRequest[2] - GET_REQUEST_NEXT
- *  GetRequest[3] - GET_REQUEST_WITH_LIST
+ *  - GetRequest[1] - GET_REQUEST_NORMAL
+ *  - GetRequest[2] - GET_REQUEST_NEXT
+ *  - GetRequest[3] - GET_REQUEST_WITH_LIST
  *
  * author: IgorKaSan
  * date: 04.05.2018.

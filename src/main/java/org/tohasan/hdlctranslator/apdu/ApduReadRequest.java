@@ -7,6 +7,15 @@ import org.tohasan.hdlctranslator.common.entities.impl.DynamicListField;
 
 import java.util.Arrays;
 
+/**
+ * ApduReadRequest – APDU фрейм типа Read Request, применяется для запросов по короткому имени
+ *  представляет собой следующую структуру:
+ *	- Quantity (1 байт) -  количество элементов в запросе,
+ *  - DynamicListField (~ байт)	- массив ReadRequestElement.
+ *
+ * author: IgorKaSan
+ * date: 04.05.2018.
+ */
 public class ApduReadRequest extends CommonFrame {
 
     public ApduReadRequest() {

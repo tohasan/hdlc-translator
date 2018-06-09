@@ -5,9 +5,9 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * GetRequestVas – (1 байт), определяет переменную доступа:
- *  GetRequestNormal[1] - INVOKE_ID_AND_PRIORITY
- *  GetRequestNormal[2] - COSEM_ATTRIBUTE_DESCRIPTION
- *  GetRequestNormal[3] - ACCESS_SELECTION
+ *  - GetRequestNormal[1] - INVOKE_ID_AND_PRIORITY
+ *  - GetRequestNormal[2] - COSEM_ATTRIBUTE_DESCRIPTION
+ *  - GetRequestNormal[3] - ACCESS_SELECTION
  *
  * author: IgorKaSan
  * date: 04.05.2018.

@@ -7,6 +7,14 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 import java.util.Optional;
 
+/**
+ * ItemLengthExtend – (2 байта), специфицирует длину элемента данных в последовательности.
+ *  используется если для описания длины элемента данных требуется более 1 байта
+ *  (задается ItemLength, значением превышеющем 128).
+ *
+ * author: IgorKaSan
+ * date: 31.05.2018.
+ */
 public class ItemLengthExtend extends CommonItem {
 
     public ItemLengthExtend(Frame frame) {
@@ -34,16 +42,7 @@ public class ItemLengthExtend extends CommonItem {
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
 
-        Optional<FrameItem> itemLengthOptional = this.frame.getItems().stream()
-                .filter(item -> item instanceof ItemLength)
-                .findFirst();
-
-//        return typeOptional.isPresent() && DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue();
-//        return typeOptional.isPresent() && (128 > typeOptional.get().getValue());
-//        return typeOptional.isPresent() && (128 > itemLengthOptional.get().getValue()) && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()) || (DataType.ARRAY.getValue() == typeOptional.get().getValue()) || (DataType.STRUCTURE.getValue() == typeOptional.get().getValue()));
         return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()) || (DataType.ARRAY.getValue() == typeOptional.get().getValue()) || (DataType.STRUCTURE.getValue() == typeOptional.get().getValue()));
-//    public int size() {
-//        return 1;
     }
 
         private boolean isItemLengthExtend() {

@@ -5,7 +5,7 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * ReadResponseFormat – (1 байт), специфицирует тип/формат ответа:
- * - ReadResponse [2] : Data-Block-Result - ответ на запрос осуществляется по-блочно
+ * - ReadResponse [2] : Data-Block-Result - ответ на запрос осуществляется поблочно
  *
  * author: IgorKaSan
  * date: 31.05.2018.

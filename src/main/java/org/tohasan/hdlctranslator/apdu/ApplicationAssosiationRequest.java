@@ -8,8 +8,11 @@ import org.tohasan.hdlctranslator.common.entities.impl.DynamicListField;
 import java.util.Arrays;
 
 /**
- * Application Assosiation Request – запрос ассоциации приложения с применением самого низкого уровня безопасности
- * <p>
+ * Application Assosiation Request – запрос ассоциации приложения (с применением самого низкого уровня безопасности)
+ *  представляет собой следующую структуру:
+ *	- AarqLength (1 байт) - длина запроса ассоциации приложения в байтах (AARQ Length),
+ *  - DynamicListField (~ байт)	- массив AcseTag.
+  * <p>
  * author: IgorKaSan
  * date: 04.05.2018.
  */

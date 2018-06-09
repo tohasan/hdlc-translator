@@ -7,6 +7,12 @@ import org.tohasan.hdlctranslator.common.entities.impl.FrameField;
 
 import java.util.Optional;
 
+/**
+ * ApduContent определяет прикладное назначение (тип) APDU пакета.
+ *
+ * author: IgorKaSan
+ * date: 31.05.2018.
+ */
 public class ApduContent extends FrameField {
 
     public ApduContent(Frame frame) {

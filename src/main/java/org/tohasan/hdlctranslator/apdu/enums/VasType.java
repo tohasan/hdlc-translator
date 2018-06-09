@@ -1,5 +1,11 @@
 package org.tohasan.hdlctranslator.apdu.enums;
 
+/**
+ * VasType (VAS - VariableAccessSpecification) определяет тип переменной доступа:
+ *
+ * author: IgorKaSan
+ * date: 04.05.2018.
+ */
 public enum VasType {
     VARIABLE_NAME((byte) 0x02),
     PARAMETERIZED_ACCESS((byte) 0x04),

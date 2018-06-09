@@ -1,6 +1,5 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
-import org.tohasan.hdlctranslator.apdu.enums.DataType;
 import org.tohasan.hdlctranslator.apdu.enums.GetResponseType;
 import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.FrameItem;
@@ -24,11 +23,6 @@ public class LongBlockNumber extends CommonItem {
     protected String getDescriptionTip() {
         return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
     }
-
-//    @Override
-//    public int size() {
-//        return 4;
-//    }
 
     @Override
     public int size() {

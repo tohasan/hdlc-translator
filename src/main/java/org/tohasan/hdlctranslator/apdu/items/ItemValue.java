@@ -82,7 +82,6 @@ public class ItemValue extends CommonItem {
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
 
-//        return typeOptional.isPresent() && DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue();
         return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()));
     }
 }

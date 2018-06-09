@@ -25,11 +25,6 @@ public class BlockNumber extends CommonItem {
         return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
     }
 
-//    @Override
-//    public int size() {
-//        return 2;
-//    }
-
     @Override
     public int size() {
         return !isBlockNumberAccess() ? 0 : 2;

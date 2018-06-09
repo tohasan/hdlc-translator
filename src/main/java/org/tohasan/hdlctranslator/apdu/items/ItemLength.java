@@ -42,9 +42,6 @@ public class ItemLength extends CommonItem {
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
 
-//        return typeOptional.isPresent() && DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue();
         return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()) || (DataType.ARRAY.getValue() == typeOptional.get().getValue()) || (DataType.STRUCTURE.getValue() == typeOptional.get().getValue()));
-//    public int size() {
-//        return 1;
     }
 }

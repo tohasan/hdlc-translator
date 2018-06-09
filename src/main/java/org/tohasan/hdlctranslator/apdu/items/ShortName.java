@@ -26,11 +26,6 @@ public class ShortName extends CommonItem {
         return "короткое имя запрашиваемого объекта (ShortName)";
     }
 
-//    @Override
-//    public int size() {
-//        return 2;
-//    }
-
     @Override
     public int size() {
         return !isBlockNumberAccess() ? 2 : 0;

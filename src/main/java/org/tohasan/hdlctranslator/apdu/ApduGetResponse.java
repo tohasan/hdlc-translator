@@ -8,6 +8,14 @@ import java.util.Arrays;
 
 /**
  * ApduGetResponse – APDU фрейм типа Get Response, применяется для ответов на запросы по логическому имени
+ *  представляет собой следующую структуру:
+ *	- GetResponseType (1 байт) - тип GetResponse (GRE[2]),
+ *	- GetResponseVas (1 байт) - тип переменной доступа (VAS - VariableAccessSpecification) для определенного типа GetResponse (GREVAS),
+ *	- LastBlock flag (1 байт) - признак последнего блока,
+ *  - LongBlockNumber (4 байта) - номер блока данных,
+ *	- ResultDiagnosticFlag (1 байт) - значение диагностики источника результата (0x00 - success),
+ *	- DataBlockLength (1 байт) - длина блока данных в байтах,
+ *  - DynamicListField (~ байт)	- массив GetResponseElement.
  *
  * author: IgorKaSan
  * date: 04.05.2018.
