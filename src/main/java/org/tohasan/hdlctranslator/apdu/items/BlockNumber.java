@@ -42,4 +42,9 @@ public class BlockNumber extends CommonItem {
 
         return (blockNumberAccessOptional.isPresent() && (VasType.BLOCK_NUMBER_ACCESS.getValue() == blockNumberAccessOptional.get().getValue())) || dataBlockResultOptional.isPresent();
     }
+
+    @Override
+    public int getValue() {
+        return super.getBytes().get(0) & 255;   // & 255 исправляет отрицательное число, возвращаемое getBytes()
+    }
 }

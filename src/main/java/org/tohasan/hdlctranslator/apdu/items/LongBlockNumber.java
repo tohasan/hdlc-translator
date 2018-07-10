@@ -37,4 +37,9 @@ public class LongBlockNumber extends CommonItem {
 
         return getRequestTypeOptional.isPresent() && (GetResponseType.GET_REQUEST_NEXT.getValue() == getRequestTypeOptional.get().getValue());
     }
+
+    @Override
+    public int getValue() {
+        return super.getBytes().get(1) & 255 << 8  | super.getBytes().get(0) & 255;  // & 255 исправляет отрицательное число, возвращаемое getBytes()
+    }
 }

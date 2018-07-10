@@ -33,6 +33,16 @@ public class ItemValue extends CommonItem {
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
             switch (typeOptional.get().getValue()) {
+                // снова пришлось вернуть, иначе выскакивает "неизвестный тип данных"
+                case 0:
+                    valueSize = 0;
+                    break;
+                case 1:
+                    valueSize = 0;
+                    break;
+                case 2:
+                    valueSize = 0;
+                    break;
                 case 3:
                     valueSize = 1;
                     break;
