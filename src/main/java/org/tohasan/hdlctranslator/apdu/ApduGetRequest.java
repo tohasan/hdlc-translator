@@ -11,7 +11,7 @@ import java.util.Arrays;
  * ApduGetRequest – APDU фрейм типа Get Request, применяется для запросов по логическому имени
  *  представляет собой следующую структуру:
  *	- GetRequestType (1 байт) - тип GetRequest (GR[]),
- *	- GetRequestVas (1 байт) - тип переменной доступа (VAS - VariableAccessSpecification) для определенного типа GetRequest (GRVAS[],
+ *	- GetRequestVas (1 байт) - тип переменной доступа (VAS - VariableAccessSpecification) для определенного типа GetRequest (GRVAS[]),
  *	- LongBlockNumber (4 байта) - номер блока данных (для GRVAS[2] – GetRequestNext),
  *  - DynamicListField (~ байт)	- массив GetRequestElement.
  *

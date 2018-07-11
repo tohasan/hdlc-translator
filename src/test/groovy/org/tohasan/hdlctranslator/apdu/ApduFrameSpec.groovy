@@ -596,43 +596,6 @@ class ApduFrameSpec extends Specification {
                 '0800065F1F04001C1320007AFA00 - значения элемента службы управления ассоциацией (ACSE Value)'
     }
 
-    def "should parse logical name access multi items request"() {
-        given:
-        def result =  frame.parse('E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 01 00 00 0F 00 00 28 00 00 FF 02 00')
-
-        expect:
-        result ==
-                'E6E600 - логическое управление каналом (logical link control)\n' +
-                'C0 - тип APDU пакета (APDU type) APDU[192]\n' +
-                '01 - тип GetRequest GR[1]\n' +
-                'C1 - тип GetRequestNormal GRN[-63]\n' +
-                '000F - идентификатор родительского класса - 0x15\n' +
-                '0000280000FF - идентификатор объекта (OBIS код) - 0.0.40.0.0.255\n' +
-                '01 - идентификатор атрибута - 1\n' +
-                '00 - флаг завершения описания атрибута - 0x0\n' +
-                '000F - идентификатор родительского класса - 0x15\n' +
-                '0000280000FF - идентификатор объекта (OBIS код) - 0.0.40.0.0.255\n' +
-                '02 - идентификатор атрибута - 2\n' +
-                '00 - флаг завершения описания атрибута - 0x0'
-    }
-
-    // AssociationLN readout (logical name access)
-    def "should parse AssociationLN request (logical name access)"() {
-        given:
-        def result =  frame.parse('E6 E6 00 C0 01 C1 00 0F 00 00 28 00 00 FF 02 00')
-
-        expect:
-        result ==
-                'E6E600 - логическое управление каналом (logical link control)\n' +
-                'C0 - тип APDU пакета (APDU type) APDU[192]\n' +
-                '01 - тип GetRequest GR[1]\n' +
-                'C1 - тип GetRequestNormal GRN[-63]\n' +
-                '000F - идентификатор родительского класса - 0x15\n' +
-                '0000280000FF - идентификатор объекта (OBIS код) - 0.0.40.0.0.255\n' +
-                '02 - идентификатор атрибута - 2\n' +
-                '00 - флаг завершения описания атрибута - 0x0'
-    }
-
     def "should parse AssociationLN response (logical name access)"() {
         given:
         def result =  frame.parse('E6 E7 00 C4 02 C1 00 00 00 00 01 00 02 01 50')
@@ -642,7 +605,7 @@ class ApduFrameSpec extends Specification {
                 'E6E700 - логическое управление каналом (logical link control)\n' +
                 'C4 - тип APDU пакета (APDU type) APDU[196]\n' +
                 '02 - тип GetRequest GR[2]\n' +
-                'C1 - тип GetRequestNormal GRN[-63]\n' +
+                'C1 - тип GetRequestNormal GRN[193]\n' +
                 '00 - признак последнего блока (LastBlock flag)\n' +
                 '00000001 - номер блока данных (BlockNumber) - 1\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
@@ -660,7 +623,7 @@ class ApduFrameSpec extends Specification {
                 'E6E600 - логическое управление каналом (logical link control)\n' +
                 'C0 - тип APDU пакета (APDU type) APDU[192]\n' +
                 '02 - тип GetRequest GR[2]\n' +
-                'C1 - тип GetRequestNormal GRN[-63]\n' +
+                'C1 - тип GetRequestNormal GRN[193]\n' +
                 '00000001 - номер блока данных (BlockNumber) - 1'
     }
 
