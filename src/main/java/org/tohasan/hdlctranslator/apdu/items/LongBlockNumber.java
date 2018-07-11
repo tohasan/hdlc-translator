@@ -26,16 +26,20 @@ public class LongBlockNumber extends CommonItem {
 
     @Override
     public int size() {
-        return !isGetRequestNext() ? 0 : 4;
+        return !isBlockMode() ? 0 : 4;
     }
 
     // TODO: Убрать заточку на конкретное значение в типе. Обобщить это!
-    private boolean isGetRequestNext() {
-        Optional<FrameItem> getRequestTypeOptional = this.frame.getItems().stream()
-                .filter(item -> item instanceof GetRequestType)
+    private boolean isBlockMode() {
+        Optional<FrameItem> getResponseTypeOptional = this.frame.getItems().stream()
+                .filter(item -> item instanceof GetResponseMode)
                 .findFirst();
 
-        return getRequestTypeOptional.isPresent() && (GetResponseType.GET_REQUEST_NEXT.getValue() == getRequestTypeOptional.get().getValue());
+        Optional<FrameItem> getRequestTypeOptional = this.frame.getItems().stream()
+                .filter(item -> item instanceof GetRequestMode)
+                .findFirst();
+
+        return (getResponseTypeOptional.isPresent() && (GetResponseType.GET_REQUEST_NEXT.getValue() == getResponseTypeOptional.get().getValue())) || (getRequestTypeOptional.isPresent() && (GetResponseType.GET_REQUEST_NEXT.getValue() == getRequestTypeOptional.get().getValue()));
     }
 
     @Override

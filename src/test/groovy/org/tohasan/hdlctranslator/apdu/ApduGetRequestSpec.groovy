@@ -7,7 +7,7 @@ import spock.lang.Specification
  * ApduGetRequestSpec – проверяет корректность обработки APDU фреймов типа GetRequest.
  *
  * ApduGetRequest применяется для запросов по логическому имени и имеет следующую структуру:
- * 	- GetRequestType (1 байт) - тип GetRequest (GR[]),
+ * 	- GetRequestMode (1 байт) - тип GetRequest (GR[]),
  * 	- GetRequestVas (1 байт) - тип переменной доступа (VAS - VariableAccessSpecification) для определенного типа GetRequest (GRVAS[]),
  * 	- LongBlockNumber (4 байта) - номер блока данных (для GRVAS[2] – GetRequestNext),
  *  - DynamicListField (~ байт)	- массив GetRequestElement.

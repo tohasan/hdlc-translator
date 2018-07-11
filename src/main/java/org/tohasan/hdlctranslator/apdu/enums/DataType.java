@@ -1,6 +1,7 @@
 package org.tohasan.hdlctranslator.apdu.enums;
 
 public enum DataType {
+    NULL_DATA((byte) 0x00),
     ARRAY((byte) 0x01),
     STRUCTURE((byte) 0x02),
     BOOLEAN((byte) 0x03),
@@ -21,5 +22,14 @@ public enum DataType {
 
     public byte getValue() {
         return value;
+    }
+
+    public static DataType getByValue(byte value) {
+        for (DataType type : values()) {
+            if (type.getValue() == value) {
+                return type;
+            }
+        }
+        return null;
     }
 }

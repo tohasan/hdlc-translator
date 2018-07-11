@@ -14,6 +14,18 @@ import java.util.Optional;
  * date: 31.05.2018.
  */
 public class ItemValue extends CommonItem {
+    // TODO: Подумать, может быть как-то использовать уже имеющееся перечисление DataType?
+    // Item types:
+    private final static int NULL_DATA =0x00;
+    private final static int ARRAY =0x01;
+    private final static int STRUCTURE =0x02;
+    private final static int BOOLEAN =0x03;
+    private final static int DOUBLE_LONG_UNSIGNED =0x06;
+    private final static int INTEGER =0x0F;
+    private final static int LONG =0x10;
+    private final static int UNSIGNED =0x11;
+    private final static int LONG_UNSIGNED =0x12;
+    private final static int ENUM =0x16;
 
     ItemValue(Frame frame) {
         super(frame);
@@ -32,36 +44,38 @@ public class ItemValue extends CommonItem {
             Optional<FrameItem> typeOptional = this.frame.getItems().stream()
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
+
+//            DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
+//            switch (type) {
             switch (typeOptional.get().getValue()) {
-                // снова пришлось вернуть, иначе выскакивает "неизвестный тип данных"
-                case 0:
+                case NULL_DATA:
                     valueSize = 0;
                     break;
-                case 1:
+                case ARRAY:
                     valueSize = 0;
                     break;
-                case 2:
+                case STRUCTURE:
                     valueSize = 0;
                     break;
-                case 3:
+                case BOOLEAN:
                     valueSize = 1;
                     break;
-                case 6:
+                case DOUBLE_LONG_UNSIGNED:
                     valueSize = 4;
                     break;
-                case 16:
-                    valueSize = 2;
-                    break;
-                case 17:
+                case INTEGER:
                     valueSize = 1;
                     break;
-                case 18:
+                case LONG:
                     valueSize = 2;
                     break;
-                case 15:
+                case UNSIGNED:
                     valueSize = 1;
                     break;
-                case 22:
+                case LONG_UNSIGNED:
+                    valueSize = 2;
+                    break;
+                case ENUM:
                     valueSize = 1;
                     break;
                 default:

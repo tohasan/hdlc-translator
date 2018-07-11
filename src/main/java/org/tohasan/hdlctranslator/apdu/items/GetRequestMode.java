@@ -4,7 +4,7 @@ import org.tohasan.hdlctranslator.common.entities.Frame;
 import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
- * GetRequestType – (1 байт), определяет тип Get Request запоса:
+ * GetRequestMode – (1 байт), определяет тип Get Request запоса:
  *  - GetRequest[1] - GET_REQUEST_NORMAL
  *  - GetRequest[2] - GET_REQUEST_NEXT
  *  - GetRequest[3] - GET_REQUEST_WITH_LIST
@@ -12,12 +12,12 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
  * author: IgorKaSan
  * date: 04.05.2018.
 */
-public class GetRequestType extends CommonItem {
+public class GetRequestMode extends CommonItem {
     final static int GET_REQUEST_NORMAL =0x01;
     final static int GET_REQUEST_NEXT =0x02;
     final static int GET_REQUEST_WITH_LIST =0x03;
 
-    public GetRequestType(Frame frame) {
+    public GetRequestMode(Frame frame) {
         super(frame);
     }
 

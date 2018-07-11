@@ -5,32 +5,30 @@ import org.tohasan.hdlctranslator.common.entities.impl.CommonItem;
 
 /**
  * GetRequestVas – (1 байт), определяет переменную доступа:
- *  - GetRequestNormal[1] - INVOKE_ID_AND_PRIORITY
- *  - GetRequestNormal[2] - COSEM_ATTRIBUTE_DESCRIPTION
- *  - GetRequestNormal[3] - ACCESS_SELECTION
+ *  - GetResponseNormal[1] - INVOKE_ID_AND_PRIORITY
+ *  - GetResponseNormal[2] - GET_DATA_RESULT
  *
- *  - GetRequestNext[1] - INVOKE_ID_AND_PRIORITY
- *  - GetRequestNext[2] - BLOCK_NUMBER
+ *  - GetResponseWithDatablock[1] - INVOKE_ID_AND_PRIORITY
+ *  - GetResponseWithDatablock[2] - DATA_BLOCK_G
  *
- *  - GetRequestWithList[1] - INVOKE_ID_AND_PRIORITY
- *  - GetRequestWithList[2] - COSEM_ATTRIBUTE_DESCRIPTION_LIST
+ *  - GetResponseWithList[1] - INVOKE_ID_AND_PRIORITY
+ *  - GetResponseWithList[2] - GET_DATA_RESULT_LIST
  *
  * author: IgorKaSan
- * date: 04.05.2018.
-*/
-public class GetRequestVas extends CommonItem {
+ * date: 11.07.2018.
+ */
+public class GetResponseVas extends CommonItem {
     final static int INVOKE_ID_AND_PRIORITY =0x01;
-    final static int COSEM_ATTRIBUTE_DESCRIPTION =0x02;
-    final static int ACCESS_SELECTION =0x03;
-    // TODO: для всех типов GetRequest
+    final static int GET_DATA_RESULT =0x02;
+    // TODO: для всех типов GetResponse
 
-    public GetRequestVas(Frame frame) {
+    public GetResponseVas(Frame frame) {
         super(frame);
     }
 
     @Override
     protected String getDescriptionTip() {
-        return "тип GetRequestNormal GRN[" +  Integer.toString(getValue()) + "]";
+        return "тип GetResponseNormal GREN[" +  Integer.toString(getValue()) + "]";
     }
 
     @Override
