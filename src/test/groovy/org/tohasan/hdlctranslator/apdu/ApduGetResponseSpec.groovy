@@ -35,7 +35,7 @@ class ApduGetResponseSpec  extends Specification {
                 '01 - тип GetResponse GRE[1]\n' +
                 'C1 - тип GetResponseNormal GREN[193]\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
-                '12 - тип данных элемента данных в последовательности (ItemType) - DataType[18]\n' +
+                '12 - тип данных (ItemType) - LONG_UNSIGNED (DataType[18])\n' +
                 '0008 - значение элемента данных в последовательности (ItemValue)'
     }
 
@@ -49,11 +49,11 @@ class ApduGetResponseSpec  extends Specification {
                 '01 - тип GetResponse GRE[1]\n' +
                 'C1 - тип GetResponseNormal GREN[193]\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
-                '02 - тип данных элемента данных в последовательности (ItemType) - DataType[2]\n' +
+                '02 - тип данных (ItemType) - STRUCTURE (DataType[2])\n' +
                 '02 - длина элемента данных в байтах (ItemLength) - 2\n' +
-                '0F - тип данных элемента данных в последовательности (ItemType) - DataType[15]\n' +
+                '0F - тип данных (ItemType) - INTEGER (DataType[15])\n' +
                 'FD - значение элемента данных в последовательности (ItemValue)\n' +
-                '16 - тип данных элемента данных в последовательности (ItemType) - DataType[22]\n' +
+                '16 - тип данных (ItemType) - ENUM (DataType[22])\n' +
                 '21 - значение элемента данных в последовательности (ItemValue)'
     }
 
@@ -70,7 +70,7 @@ class ApduGetResponseSpec  extends Specification {
                 '00000001 - номер блока данных (BlockNumber) - 1\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
                 '02 - длина блока данных в байтах (DataBlockLength) - 2\n' +
-                '01 - тип данных элемента данных в последовательности (ItemType) - DataType[1]\n' +
+                '01 - тип данных (ItemType) - ARRAY (DataType[1])\n' +
                 '50 - длина элемента данных в байтах (ItemLength) - 80'
     }
 
@@ -87,13 +87,13 @@ class ApduGetResponseSpec  extends Specification {
                 '00000002 - номер блока данных (BlockNumber) - 2\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
                 '0F - длина блока данных в байтах (DataBlockLength) - 15\n' +
-                '02 - тип данных элемента данных в последовательности (ItemType) - DataType[2]\n' +
+                '02 - тип данных (ItemType) - STRUCTURE (DataType[2])\n' +
                 '04 - длина элемента данных в байтах (ItemLength) - 4\n' +
-                '12 - тип данных элемента данных в последовательности (ItemType) - DataType[18]\n' +
+                '12 - тип данных (ItemType) - LONG_UNSIGNED (DataType[18])\n' +
                 '0008 - значение элемента данных в последовательности (ItemValue)\n' +
-                '11 - тип данных элемента данных в последовательности (ItemType) - DataType[17]\n' +
+                '11 - тип данных (ItemType) - UNSIGNED (DataType[17])\n' +
                 '00 - значение элемента данных в последовательности (ItemValue)\n' +
-                '09 - тип данных элемента данных в последовательности (ItemType) - DataType[9]\n' +
+                '09 - тип данных (ItemType) - OCTET_STRING (DataType[9])\n' +
                 '06 - длина элемента данных в байтах (ItemLength) - 6\n' +
                 '0000010000FF - значение элемента данных в последовательности (ItemValue)'
     }

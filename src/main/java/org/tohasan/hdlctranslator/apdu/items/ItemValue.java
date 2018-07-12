@@ -16,16 +16,16 @@ import java.util.Optional;
 public class ItemValue extends CommonItem {
     // TODO: Подумать, может быть как-то использовать уже имеющееся перечисление DataType?
     // Item types:
-    private final static int NULL_DATA =0x00;
-    private final static int ARRAY =0x01;
-    private final static int STRUCTURE =0x02;
-    private final static int BOOLEAN =0x03;
-    private final static int DOUBLE_LONG_UNSIGNED =0x06;
-    private final static int INTEGER =0x0F;
-    private final static int LONG =0x10;
-    private final static int UNSIGNED =0x11;
-    private final static int LONG_UNSIGNED =0x12;
-    private final static int ENUM =0x16;
+//    private final static int NULL_DATA =0x00;
+//    private final static int ARRAY =0x01;
+//    private final static int STRUCTURE =0x02;
+//    private final static int BOOLEAN =0x03;
+//    private final static int DOUBLE_LONG_UNSIGNED =0x06;
+//    private final static int INTEGER =0x0F;
+//    private final static int LONG =0x10;
+//    private final static int UNSIGNED =0x11;
+//    private final static int LONG_UNSIGNED =0x12;
+//    private final static int ENUM =0x16;
 
     ItemValue(Frame frame) {
         super(frame);
@@ -42,12 +42,13 @@ public class ItemValue extends CommonItem {
 
         if (!isByteString()) {
             Optional<FrameItem> typeOptional = this.frame.getItems().stream()
-                .filter(item -> item instanceof ItemType)
-                .findFirst();
+                    .filter(item -> item instanceof ItemType)
+                    .findFirst();
 
-//            DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
-//            switch (type) {
-            switch (typeOptional.get().getValue()) {
+            DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
+            // TODO: Обработать type = null
+            switch (type) {
+//            switch (typeOptional.get().getValue()) {
                 case NULL_DATA:
                     valueSize = 0;
                     break;
@@ -84,8 +85,8 @@ public class ItemValue extends CommonItem {
             }
         } else {
             Optional<FrameItem> itemLengthOptional = this.frame.getItems().stream()
-                .filter(item -> item instanceof ItemLength)
-                .findFirst();
+                    .filter(item -> item instanceof ItemLength)
+                    .findFirst();
             valueSize = itemLengthOptional.get().getValue();
         }
         return valueSize;
@@ -94,8 +95,8 @@ public class ItemValue extends CommonItem {
     // TODO: Убрать заточку на конкретное значение в типе. Обобщить это!
     private boolean isByteString() {
         Optional<FrameItem> typeOptional = this.frame.getItems().stream()
-            .filter(item -> item instanceof ItemType)
-            .findFirst();
+                .filter(item -> item instanceof ItemType)
+                .findFirst();
 
         return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()));
     }

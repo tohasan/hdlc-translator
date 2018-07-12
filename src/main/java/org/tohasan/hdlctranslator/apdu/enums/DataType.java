@@ -11,7 +11,7 @@ public enum DataType {
     LONG((byte) 0x10),
     UNSIGNED((byte) 0x11),
     LONG_UNSIGNED((byte) 0x12),
-    INTEGER((byte) 0x15),
+    INTEGER((byte) 0x0F),
     ENUM((byte) 0x16);
 
     private byte value;
