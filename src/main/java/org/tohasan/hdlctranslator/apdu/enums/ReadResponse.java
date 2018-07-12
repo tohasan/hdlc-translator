@@ -15,4 +15,13 @@ public enum ReadResponse {
     public byte getValue() {
         return value;
     }
+
+    public static ReadResponse getByValue(byte value) {
+        for (ReadResponse type : values()) {
+            if (type.getValue() == value) {
+                return type;
+            }
+        }
+        return null;
+    }
 }
