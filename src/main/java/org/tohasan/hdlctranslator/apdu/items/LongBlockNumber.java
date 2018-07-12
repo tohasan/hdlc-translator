@@ -9,10 +9,10 @@ import java.util.Optional;
 
 /**
  * LongBlockNumber – (4 байта), определяет номер блока данных для Get Response блоков данных.
- *
+ * <p>
  * author: IgorKaSan
  * date: 04.05.2018.
-*/
+ */
 public class LongBlockNumber extends CommonItem {
 
     public LongBlockNumber(Frame frame) {
@@ -21,7 +21,7 @@ public class LongBlockNumber extends CommonItem {
 
     @Override
     protected String getDescriptionTip() {
-        return "номер блока данных (BlockNumber) - " +  Integer.toString(getValue());
+        return "номер блока данных (BlockNumber) - " + Integer.toString(getValue());
     }
 
     @Override
@@ -44,6 +44,6 @@ public class LongBlockNumber extends CommonItem {
 
     @Override
     public int getValue() {
-        return super.getBytes().get(1) & 255 << 8  | super.getBytes().get(0) & 255;  // & 255 исправляет отрицательное число, возвращаемое getBytes()
+        return super.getBytes().get(1) & 255 << 8 | super.getBytes().get(0) & 255;  // & 255 исправляет отрицательное число, возвращаемое getBytes()
     }
 }

@@ -23,7 +23,7 @@ public class ItemLengthExtend extends CommonItem {
 
     @Override
     protected String getDescriptionTip() {
-        return "длина элемента данных в байтах (ItemLength) - " + Integer.toString(getValue());
+        return "длина элемента данных в байтах (ItemLengthExtend) - " + Integer.toString(getValue());
     }
 
     @Override
@@ -34,17 +34,22 @@ public class ItemLengthExtend extends CommonItem {
     // TODO: Убрать заточку на конкретное значение в типе. Обобщить это!
     private boolean isItemLength() {
         Optional<FrameItem> typeOptional = this.frame.getItems().stream()
-            .filter(item -> item instanceof ItemType)
-            .findFirst();
+                .filter(item -> item instanceof ItemType)
+                .findFirst();
 
         return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()) || (DataType.ARRAY.getValue() == typeOptional.get().getValue()) || (DataType.STRUCTURE.getValue() == typeOptional.get().getValue()));
     }
 
     private boolean isItemLengthExtend() {
         Optional<FrameItem> itemLengthOptional = this.frame.getItems().stream()
-            .filter(item -> item instanceof ItemLength)
-            .findFirst();
+                .filter(item -> item instanceof ItemLength)
+                .findFirst();
 
         return itemLengthOptional.isPresent() && (128 <= itemLengthOptional.get().getValue());
+    }
+
+    @Override
+    public int getValue() {
+        return (super.getBytes().get(1) & 255) << 8  | super.getBytes().get(0) & 255;  // & 255 исправляет отрицательное число, возвращаемое getBytes()
     }
 }
