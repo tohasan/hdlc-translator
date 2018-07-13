@@ -53,7 +53,7 @@ class ApduReadResponseSpec extends Specification {
         expect:
         result ==
                 '01 - количество элементов в последовательности (Quantity) - 1\n' +
-                '02 - тип переменной доступа (ReadResponseFormat) ReadResponse[2]\n' +
+                '02 - тип переменной доступа (ReadResponseFormat) - DATA_BLOCK_RESULT (ReadResponse[2])\n' +
                 '00 - признак последнего блока (LastBlock flag)\n' +
                 '0001 - номер блока данных (BlockNumber) - 1\n' +
                 '6D - длина блока данных в байтах (DataBlockLength) - 109\n' +

@@ -14,18 +14,6 @@ import java.util.Optional;
  * date: 31.05.2018.
  */
 public class ItemValue extends CommonItem {
-    // TODO: Подумать, может быть как-то использовать уже имеющееся перечисление DataType?
-    // Item types:
-//    private final static int NULL_DATA =0x00;
-//    private final static int ARRAY =0x01;
-//    private final static int STRUCTURE =0x02;
-//    private final static int BOOLEAN =0x03;
-//    private final static int DOUBLE_LONG_UNSIGNED =0x06;
-//    private final static int INTEGER =0x0F;
-//    private final static int LONG =0x10;
-//    private final static int UNSIGNED =0x11;
-//    private final static int LONG_UNSIGNED =0x12;
-//    private final static int ENUM =0x16;
 
     ItemValue(Frame frame) {
         super(frame);
@@ -46,9 +34,12 @@ public class ItemValue extends CommonItem {
                     .findFirst();
 
             DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
-            // TODO: Обработать type = null
+
+            if (type == null) {
+                type = DataType.getByValue((byte) 0xFF);
+            }
+
             switch (type) {
-//            switch (typeOptional.get().getValue()) {
                 case NULL_DATA:
                     valueSize = 0;
                     break;
@@ -80,7 +71,7 @@ public class ItemValue extends CommonItem {
                     valueSize = 1;
                     break;
                 default:
-                    System.out.println("WARN Unknown data type");
+                    System.out.println("WARNING: Unknown data type");
                     break;
             }
         } else {

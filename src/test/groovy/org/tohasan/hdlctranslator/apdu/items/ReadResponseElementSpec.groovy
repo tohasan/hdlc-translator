@@ -82,4 +82,13 @@ class ReadResponseElementSpec extends Specification {
                 '16 - тип данных (ItemType) - ENUM (DataType[22])\n' +
                 '21 - значение элемента данных в последовательности (ItemValue)'
     }
+
+    def "should signal about element with unknown data type"() {
+        given:
+        def result = frame.parse('13 02')
+
+        expect:
+        result ==
+                '13 - тип данных (ItemType) - НЕИЗВЕСТНЫЙ_ТИП (DataType[19])'
+    }
 }

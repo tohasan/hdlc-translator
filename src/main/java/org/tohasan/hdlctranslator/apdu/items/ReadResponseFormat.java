@@ -11,7 +11,7 @@ import java.util.Optional;
 /**
  * ReadResponseFormat – (1 байт), специфицирует тип/формат ответа:
  * - ReadResponse [2] : Data-Block-Result - ответ на запрос осуществляется поблочно
- *
+ * <p>
  * author: IgorKaSan
  * date: 31.05.2018.
  */
@@ -23,35 +23,15 @@ public class ReadResponseFormat extends CommonItem {
 
     @Override
     protected String getDescriptionTip() {
-        String typeDescription;
+        String typeDescription = "НЕИЗВЕСТНЫЙ_ТИП";
 
-//        Optional<FrameItem> typeOptional = this.frame.getItems().stream()
-//                .filter(item -> item instanceof ItemType)
-//                .findFirst();
-
-//        DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
         ReadResponse type = ReadResponse.getByValue((byte) this.getValue());
 
-        // TODO: Обработать type = null
-        switch (type) {
-            case DATA:
-                typeDescription = "DATA";
-                break;
-            case DATA_ACCESS_ERROR:
-                typeDescription = "DATA_ACCESS_ERROR";
-                break;
-            case DATA_BLOCK_RESULT:
-                typeDescription = "DATA_BLOCK_RESULT";
-                break;
-            case BLOCK_NUMBER:
-                typeDescription = "BLOCK_NUMBER";
-                break;
-            default:
-                typeDescription = "Unknown data type";
-                break;
+        if (type != null) {
+            typeDescription = type.toString();
         }
-//        return "тип данных (ItemType) - " + typeDescription + " (DataType[" + Integer.toString(getValue()) + "])";
-        return "тип переменной доступа (ReadResponseFormat) - " + typeDescription + " (ReadResponse[" +  Integer.toString(getValue()) + "])";
+
+        return "тип переменной доступа (ReadResponseFormat) - " + typeDescription + " (ReadResponse[" + Integer.toString(getValue()) + "])";
     }
 
     @Override
