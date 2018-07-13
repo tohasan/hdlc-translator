@@ -14,6 +14,7 @@ import java.util.Optional;
  * date: 31.05.2018.
  */
 public class ItemValue extends CommonItem {
+    final static int UNKNOWN_DATA_TYPE =0xFF;
 
     ItemValue(Frame frame) {
         super(frame);
@@ -36,7 +37,7 @@ public class ItemValue extends CommonItem {
             DataType type = DataType.getByValue((byte) typeOptional.get().getValue());
 
             if (type == null) {
-                type = DataType.getByValue((byte) 0xFF);
+                type = DataType.getByValue((byte) UNKNOWN_DATA_TYPE);
             }
 
             switch (type) {
