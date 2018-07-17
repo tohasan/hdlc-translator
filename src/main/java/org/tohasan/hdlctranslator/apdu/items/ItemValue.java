@@ -14,7 +14,8 @@ import java.util.Optional;
  * date: 31.05.2018.
  */
 public class ItemValue extends CommonItem {
-    final static int UNKNOWN_DATA_TYPE =0xFF;
+    final static int UNKNOWN_DATA_TYPE = 0xFF;
+    final static int BIT_IN_BYTE = 8;
 
     ItemValue(Frame frame) {
         super(frame);
@@ -22,7 +23,27 @@ public class ItemValue extends CommonItem {
 
     @Override
     protected String getDescriptionTip() {
-        return "значение элемента данных в последовательности (ItemValue)";
+        String valueDescription = "значение элемента данных (ItemValue)";
+
+        if (isByteString()) {
+            int size = this.size();
+            int arrayMaxIndex = size - 1;
+            StringBuilder obis = new StringBuilder();
+
+            byte[] bytes = new byte[size];
+
+            for (int i = 0; i < size; i++) {
+                bytes[arrayMaxIndex - i] = super.getBytes().get(i);
+                if (0 < obis.length()) {
+                    obis.insert(0, Integer.toString(bytes[arrayMaxIndex - i] & 255) + ".");
+                } else {
+                    obis.insert(0, Integer.toString(bytes[arrayMaxIndex - i] & 255));
+                }
+            }
+            // TODO: сделать, что бы только значения ОБИСов преобразовывались в строку 0.0.0.0.0.0
+            valueDescription = valueDescription + " - идентификатор объекта (OBIS код) - " + obis.toString();
+        }
+        return valueDescription;
     }
 
     @Override
@@ -76,10 +97,19 @@ public class ItemValue extends CommonItem {
                     break;
             }
         } else {
+            Optional<FrameItem> typeOptional = this.frame.getItems().stream()
+                    .filter(item -> item instanceof ItemType)
+                    .findFirst();
+
             Optional<FrameItem> itemLengthOptional = this.frame.getItems().stream()
                     .filter(item -> item instanceof ItemLength)
                     .findFirst();
-            valueSize = itemLengthOptional.get().getValue();
+
+            if (DataType.BIT_STRING.getValue() == typeOptional.get().getValue()) {
+                valueSize = itemLengthOptional.get().getValue() / BIT_IN_BYTE;
+            } else {
+                valueSize = itemLengthOptional.get().getValue();
+            }
         }
         return valueSize;
     }   // длина поля должна рассчитываться в соответствии с типом данных
@@ -90,6 +120,6 @@ public class ItemValue extends CommonItem {
                 .filter(item -> item instanceof ItemType)
                 .findFirst();
 
-        return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()));
+        return typeOptional.isPresent() && ((DataType.OCTET_STRING.getValue() == typeOptional.get().getValue()) || (DataType.VISIBLE_STRING.getValue() == typeOptional.get().getValue()) || (DataType.BIT_STRING.getValue() == typeOptional.get().getValue()));
     }
 }

@@ -90,11 +90,11 @@ class ApduGetResponseSpec  extends Specification {
                 '02 - тип данных (ItemType) - STRUCTURE (DataType[2])\n' +
                 '04 - длина элемента данных в байтах (ItemLength) - 4\n' +
                 '12 - тип данных (ItemType) - LONG_UNSIGNED (DataType[18])\n' +
-                '0008 - значение элемента данных в последовательности (ItemValue)\n' +
+                '0008 - значение элемента данных (ItemValue)\n' +
                 '11 - тип данных (ItemType) - UNSIGNED (DataType[17])\n' +
-                '00 - значение элемента данных в последовательности (ItemValue)\n' +
+                '00 - значение элемента данных (ItemValue)\n' +
                 '09 - тип данных (ItemType) - OCTET_STRING (DataType[9])\n' +
                 '06 - длина элемента данных в байтах (ItemLength) - 6\n' +
-                '0000010000FF - значение элемента данных в последовательности (ItemValue)'
+                '0000010000FF - значение элемента данных (ItemValue) - идентификатор объекта (OBIS код) - 0.0.1.0.0.255'
     }
 }
