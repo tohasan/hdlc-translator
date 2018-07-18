@@ -1,6 +1,8 @@
 package org.tohasan.hdlctranslator.apdu.items;
 
 import org.tohasan.hdlctranslator.common.entities.impl.CommonFrame;
+import org.tohasan.hdlctranslator.common.entities.impl.DynamicListField;
+
 import java.util.Arrays;
 
 /**
@@ -21,6 +23,8 @@ public class GetRequestElement extends CommonFrame {
                 new ObjectId(this),
                 new AttributeId(this),
                 new AttributeDescriptor(this)
+//                new AccessDescriptor(this),
+//                new DynamicListField<>(this, ReadResponseElement.class)
         ));
     }
 }
