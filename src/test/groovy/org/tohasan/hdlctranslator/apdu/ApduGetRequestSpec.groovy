@@ -67,4 +67,16 @@ class ApduGetRequestSpec extends Specification {
                 'C1 - тип GetRequestNormal GRN[193]\n' +
                 '00000004 - номер блока данных (BlockNumber) - 4'
     }
+
+    def "should parse ParametrezedGetRequest"() {
+        // GET_REQUEST with parameters (Reading profile generic data for period)
+        given:
+        def result = frame.parse('01 C1 00 07 01 00 63 02 00 FF 02 01 01 02 04 02 04 12 00 08 09 06 00 00 01 00 00 FF 0F 02 12 00 00 09 0C 07 E2 05 01 02 01 00 26 FF FF 4C 00 09 0C 07 E2 05 06 07 02 1E 26 FF FF 4C 00 01 00')
+
+        expect:
+        result ==
+                '02 - тип GetRequest GR[2]\n' +
+                'C1 - тип GetRequestNormal GRN[193]\n' +
+                '00000004 - номер блока данных (BlockNumber) - 4'
+    }
 }
