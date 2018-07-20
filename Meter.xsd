@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+   <xs:schemaattributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <!-- XML Schema Generated from XML Document on Fri Jul 20 2018 12:50:59 GMT+0300 (RTZ 2 (зима)) -->
+         <!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+         <xs:elementname="Meter">
+               <xs:complexType>
+                     <xs:sequence>
+                           <xs:elementname="Types">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:elementname="Type" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:attributetype="xs:string" name="Name"></xs:attribute>
+                                                         <xs:attributetype="xs:int" name="ID"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                       <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:elementname="Objects">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:elementname="Object" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:elementname="Attributes">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:elementtype="xs:string" name="Attribute" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:attributetype="xs:string" name="Type"></xs:attribute>
+                                                                                             <xs:attributetype="xs:string" name="Description"></xs:attribute>
+                                                                                             <xs:attributetype="xs:string" name="SN"></xs:attribute>
+                                                                                             <xs:attributetype="xs:int" name="Length"></xs:attribute>
+                                                                                             <xs:attributetype="xs:int" name="Index"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                               <xs:elementname="Methods">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:elementname="Method" maxOccurs="unbounded">
+                                                                                       <xs:complexType>
+                                                                                             <xs:attributetype="xs:string" name="Type"></xs:attribute>
+                                                                                             <xs:attributetype="xs:string" name="Description"></xs:attribute>
+                                                                                             <xs:attributetype="xs:string" name="SN"></xs:attribute>
+                                                                                             <xs:attributetype="xs:int" name="Index"></xs:attribute>
+                                                                                             <xs:attributetype="xs:string" name="Status"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attributetype="xs:string" name="Description"></xs:attribute>
+                                                         <xs:attributetype="xs:int" name="Version"></xs:attribute>
+                                                         <xs:attributetype="xs:int" name="IC"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                       <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                           <xs:elementname="Operations">
+                                 <xs:complexType>
+                                       <xs:sequence>
+                                             <xs:elementname="Operation" maxOccurs="unbounded">
+                                                   <xs:complexType>
+                                                         <xs:sequence>
+                                                               <xs:elementname="Instruction">
+                                                                     <xs:complexType>
+                                                                           <xs:sequence>
+                                                                                 <xs:elementname="Entities">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:elementtype="xs:int" name="Entity">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:attributetype="xs:string" name="LN"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                                 <xs:elementname="Parameters">
+                                                                                       <xs:complexType>
+                                                                                             <xs:sequence>
+                                                                                                   <xs:elementtype="xs:string" name="Parameter" maxOccurs="unbounded">
+                                                                                                         <xs:complexType>
+                                                                                                               <xs:attributetype="xs:string" name="Name"></xs:attribute>
+                                                                                                               <xs:attributetype="xs:string" name="Type"></xs:attribute>
+                                                                                                         </xs:complexType>
+                                                                                                   </xs:element>
+                                                                                             </xs:sequence>
+                                                                                             <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                                                                       </xs:complexType>
+                                                                                 </xs:element>
+                                                                           </xs:sequence>
+                                                                           <xs:attributetype="xs:string" name="ID"></xs:attribute>
+                                                                           <xs:attributetype="xs:string" name="Type"></xs:attribute>
+                                                                     </xs:complexType>
+                                                               </xs:element>
+                                                         </xs:sequence>
+                                                         <xs:attributetype="xs:int" name="ID"></xs:attribute>
+                                                   </xs:complexType>
+                                             </xs:element>
+                                       </xs:sequence>
+                                       <xs:attributetype="xs:int" name="Quantity"></xs:attribute>
+                                 </xs:complexType>
+                           </xs:element>
+                     </xs:sequence>
+                     <xs:attributetype="xs:string" name="Model"></xs:attribute>
+               </xs:complexType>
+         </xs:element>
+   </xs:schema>
+ 

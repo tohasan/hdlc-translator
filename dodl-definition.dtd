@@ -1,0 +1,18 @@
+<!ELEMENT Meter (Types, Objects, Operations)><!ATTLIST Meter Model CDATA #REQUIRED>
+        <!ELEMENT Types (Type+)><!ATTLIST Types Quantity CDATA #IMPLIED>
+        <!ELEMENT Type (Elements?)><!ATTLIST Type ID CDATA #IMPLIED Name CDATA #IMPLIED Size CDATA #IMPLIED>
+        <!ELEMENT Elements (Element+)><!ATTLIST Elements Quantity CDATA #IMPLIED>
+        <!ELEMENT Element (#PCDATA)><!ATTLIST Element ID CDATA #IMPLIED Name CDATA #IMPLIED Type CDATA #IMPLIED Size CDATA #IMPLIED>
+        <!ELEMENT Objects (Object+)><!ATTLIST Objects Quantity CDATA #IMPLIED>
+        <!ELEMENT Object (Attributes, Methods)><!ATTLIST Object IC CDATA #IMPLIED Version CDATA #IMPLIED Description CDATA #IMPLIED>
+        <!ELEMENT Attributes (Attribute+)><!ATTLIST Attributes Quantity CDATA #IMPLIED>
+        <!ELEMENT Attribute (#PCDATA)><!ATTLIST Attribute Index CDATA #IMPLIED Description CDATA #IMPLIED Type CDATA #IMPLIED Length CDATA #IMPLIED SN CDATA #IMPLIED>
+        <!ELEMENT Methods (Method+)><!ATTLIST Methods Quantity CDATA #IMPLIED>
+        <!ELEMENT Method (#PCDATA)><!ATTLIST Method Index CDATA #IMPLIED Description CDATA #IMPLIED Type CDATA #IMPLIED Status CDATA #IMPLIED SN CDATA #IMPLIED>
+        <!ELEMENT Operations (Operation+)><!ATTLIST Operations Quantity CDATA #IMPLIED>
+        <!ELEMENT Operation (Instruction+)><!ATTLIST Operation ID CDATA #REQUIRED>
+        <!ELEMENT Instruction (Entities?, Parameters?)><!ATTLIST Instruction ID CDATA #IMPLIED Type CDATA #REQUIRED>
+        <!ELEMENT Entities (Entity+)><!ATTLIST Entities Quantity CDATA #IMPLIED>
+        <!ELEMENT Entity (#PCDATA)><!ATTLIST Entity LN CDATA #REQUIRED>
+        <!ELEMENT Parameters (Parameter+)><!ATTLIST Parameters Quantity CDATA #IMPLIED>
+        <!ELEMENT Parameter (#PCDATA)><!ATTLIST Parameter Name CDATA #IMPLIED Type CDATA #IMPLIED>

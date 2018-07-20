@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Описание схемы DODL -->
+<!DOCTYPE Meter SYSTEM "dodl-definition.dtd">
+<!-- Описание модели прибора учета Меркурий-234 -->
+<Meter Model="M234">
+    <!-- Описание типов данных -->
+    <Types Quantity="7">
+        <Type ID="1" Name="Array"></Type>
+        <Type ID="2" Name="Structure"></Type>
+        <Type ID="6" Name="Unsigned32" Size="4"></Type>
+        <Type ID="9" Name="OctetString"></Type>
+        <Type ID="15" Name="Integer8" Size="1"></Type>
+        <Type ID="18" Name="Unsigned16" Size="2"></Type>
+        <Type ID="34" Name="Enum" Size="1"></Type>
+        <Type ID="50" Name="LoadProfileObjects">
+            <Elements Quantity="6">
+                <Element ID="1" Name="captured_object_list" Type="1" Size="8"></Element>
+                <Element ID="2" Name="captured_object" Type="2" Size="4"></Element>
+                <Element ID="3" Name="iclass_id" Type="18"></Element>
+                <Element ID="4" Name="object_logical_name" Type="9" Size="6"></Element>
+                <Element ID="5" Name="attribute_index" Type="15"></Element>
+                <Element ID="6" Name="data_index" Type="18"></Element>
+            </Elements>
+        </Type>
+        <Type ID="51" Name="LoadProfileRecords">
+            <Elements Quantity="10">
+                <Element ID="1" Name="load_profile_record_list" Type="1"></Element>
+                <Element ID="2" Name="load_profile_record" Type="2" Size="8"></Element>
+                <Element ID="3" Name="timestamp" Type="9" Size="12"></Element>
+                <Element ID="4" Name="status" Type="9" Size="3"></Element>
+                <Element ID="5" Name="average_power_+P" Type="6"></Element>
+                <Element ID="6" Name="average_power_-P" Type="6"></Element>
+                <Element ID="7" Name="average_power_Q1" Type="6"></Element>
+                <Element ID="8" Name="average_power_Q2" Type="6"></Element>
+                <Element ID="9" Name="average_power_Q3" Type="6"></Element>
+                <Element ID="10" Name="average_power_Q4" Type="6"></Element>
+            </Elements>
+        </Type>
+        <Type ID="52" Name="ScalerUnitType">
+            <Elements Quantity="3">
+                <Element ID="1" Name="scaler_unit" Type="2"></Element>
+                <Element ID="2" Name="scaler" Type="15"></Element>
+                <Element ID="3" Name="unit" Type="34"></Element>
+            </Elements>
+        </Type>
+    </Types>
+    <!-- Описание объектов -->
+    <Objects Quantity="3">
+        <Object IC="7" Version="0" Description="LoadProfile">
+            <Attributes Quantity="9">
+                <Attribute Index="1" Description="logical_name" Type="OctetString" Length="6" SN="C000">1.0.99.1.0.255
+                </Attribute>
+                <Attribute Index="2" Description="buffer" Type="LoadProfileRecords" SN="C008"></Attribute>
+                <Attribute Index="3" Description="capture_objects" Type="LoadProfileObjects" SN="C010"></Attribute>
+                <Attribute Index="4" Description="capture_period" Type="DoubleLongUnsigned" SN="C018">0</Attribute>
+                <Attribute Index="5" Description="sort_method" Type="Enumerated" SN="C020"></Attribute>
+                <Attribute Index="6" Description="sort_object" Type="Enumerated" SN="C028"></Attribute>
+                <Attribute Index="6" Description="entries_in_use" Type="DoubleLongUnsigned" SN="C030"></Attribute>
+                <Attribute Index="7" Description="profile_entries" Type="DoubleLongUnsigned" SN="C038"></Attribute>
+            </Attributes>
+            <Methods Quantity="6">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Optional"
+                        SN="C058"></Method>
+                <Method Index="2" Description="capture (data)" Type="Void" Status="Optional"
+                        SN="C060"></Method>
+            </Methods>
+        </Object>
+        <Object IC="8" Version="0" Description="Ch. 0 Clock object #1">
+            <Attributes Quantity="9">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6" SN="6800">0.0.1.0.0.255
+                </Attribute>
+                <Attribute Index="2" Description="time" Type="Octet-string" Length="12" SN="6808">24.11.2017 14:13:27
+                </Attribute>
+                <Attribute Index="3" Description="time_zone" Type="Long" SN="6810">120</Attribute>
+                <Attribute Index="4" Description="status" Type="Unsigned" SN="6818">0</Attribute>
+                <Attribute Index="5" Description="daylights_savings_begin" Type="Octet-string" Length="12" SN="6820">
+                    *.*.* *:*:*
+                </Attribute>
+                <Attribute Index="6" Description="daylights_savings_end" Type="Octet-	string" Length="12" SN="6828">
+                    *.*.* *:*:*
+                </Attribute>
+                <Attribute Index="7" Description="daylights_savings_deviation" Type="Integer" SN="6830">0</Attribute>
+                <Attribute Index="8" Description="daylights_savings_enabled" Type="Boolean" SN="6838">false</Attribute>
+                <Attribute Index="9" Description="clock_base" Type="Enum" SN="6840">1</Attribute>
+            </Attributes>
+            <Methods Quantity="6">
+                <Method Index="1" Description="adjust_to_quarter (data)" Type="Void" Status="Optional"
+                        SN="6860"></Method>
+                <Method Index="2" Description="adjust_to_measuring_period (data)" Type="Void" Status="Optional"
+                        SN="6868"></Method>
+                <Method Index="3" Description="adjust_to_minute (data)" Type="Void" Status="Optional"
+                        SN="6870"></Method>
+                <Method Index="4" Description="adjust_to_preset_time" Type="Void" Status="Optional" SN="6878"></Method>
+                <Method Index="5" Description="preset_adjusting_time (data)" Type="Void" Status="Optional"
+                        SN="6880"></Method>
+                <Method Index="6" Description="shift_time (data)" Type="Void" Status="Optional" SN="6888"></Method>
+            </Methods>
+        </Object>
+        <Object IC="3" Version="0" Description="Ch. 0 Date of last calibration">
+            <Attributes Quantity="3">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6" SN="7A80">
+                    0.0.96.2.5.255
+                </Attribute>
+                <Attribute Index="2" Description="value" Type="Date" SN="7A88">23.4.2017</Attribute>
+                <Attribute Index="3" Description="scaler_unit" Type="ScalerUnitType" SN="7A90">{0,255}</Attribute>
+            </Attributes>
+            <Methods Quantity="1">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Mandatory" SN="7AA8"></Method>
+            </Methods>
+        </Object>
+    </Objects>
+    <!-- Описание операций -->
+    <Operations Quantity="37">
+        <Operation ID="0004">
+            <Instruction ID="log_record_complex" Type="Get">
+                <Entities Quantity="1">
+                    <Entity LN="1.0.99.1.0.255">2</Entity>
+                </Entities>
+                <Parameters Quantity="2">
+                    <Parameter Name="PeriodStart" Type="DateTime">@log_period_start</Parameter>
+                    <Parameter Name="PeriodEnd" Type="DateTime">@log_period_end</Parameter>
+                </Parameters>
+            </Instruction>
+        </Operation>
+        <Operation ID="0008">
+            <Instruction Type="0004"></Instruction>
+            <Instruction Type="Get">
+                <Entities Quantity="1">
+                    <Entity LN="1.0.2.14.0.255">3</Entity>
+                </Entities>
+                <Parameters Quantity="1">
+                    <Parameter>$log_record_complex</Parameter>
+                </Parameters>
+            </Instruction>
+        </Operation>
+        <Operation ID="0030">
+            <Instruction Type="Get">
+                <Entities Quantity="5">
+                    <Entity LN="1.0.99.1.0.255">3</Entity>
+                    <Entity LN="1.0.99.1.0.255">4</Entity>
+                    <Entity LN="1.0.99.1.0.255">5</Entity>
+                    <Entity LN="1.0.99.1.0.255">6</Entity>
+                    <Entity LN="1.0.99.1.0.255">8</Entity>
+                </Entities>
+            </Instruction>
+            <Instruction Type="Get">
+                <Entities Quantity="1">
+                    <Entity LN="1.0.99.1.0.255">7</Entity>
+                </Entities>
+            </Instruction>
+            <Instruction Type="Get">
+                <Entities Quantity="1">
+                    <Entity LN="1.0.99.1.0.255">2</Entity>
+                </Entities>
+                <Parameters Quantity="1">
+                    <Parameter Name="PeriodStart" Type="DateTime">@periodStart</Parameter>
+                    <Parameter Name="PeriodEnd" Type="DateTime">@periodEnd</Parameter>
+                </Parameters>
+            </Instruction>
+            <Instruction Type="Get">
+                <Entities Quantity="1">
+                    <Entity LN="1.0.2.14.0.255">3</Entity>
+                </Entities>
+            </Instruction>
+        </Operation>
+        <Operation ID="0070">
+            <Instruction Type="0030">
+            </Instruction>
+        </Operation>
+    </Operations>
+</Meter>
