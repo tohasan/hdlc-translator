@@ -36,7 +36,7 @@ class ApduGetResponseSpec  extends Specification {
                 'C1 - тип GetResponseNormal GREN[193]\n' +
                 '00 - значение диагностики источника результата (0x00 - success)\n' +
                 '12 - тип данных (ItemType) - LONG_UNSIGNED (DataType[18])\n' +
-                '0008 - значение элемента данных в последовательности (ItemValue)'
+                '0008 - значение элемента данных (ItemValue)'
     }
 
     def "should parse multi elements GetResponseNormal"() {
@@ -52,9 +52,9 @@ class ApduGetResponseSpec  extends Specification {
                 '02 - тип данных (ItemType) - STRUCTURE (DataType[2])\n' +
                 '02 - длина элемента данных в байтах (ItemLength) - 2\n' +
                 '0F - тип данных (ItemType) - INTEGER (DataType[15])\n' +
-                'FD - значение элемента данных в последовательности (ItemValue)\n' +
+                'FD - значение элемента данных (ItemValue)\n' +
                 '16 - тип данных (ItemType) - ENUM (DataType[22])\n' +
-                '21 - значение элемента данных в последовательности (ItemValue)'
+                '21 - значение элемента данных (ItemValue)'
     }
 
     def "should parse simple GetResponseWithDatablock"() {
@@ -78,6 +78,30 @@ class ApduGetResponseSpec  extends Specification {
         // GET_RESPONSE with next following block flag and few GetResponseElement frames
         given:
         def result =  frame.parse('02 C1 00 00 00 00 02 00 0F 02 04 12 00 08 11 00 09 06 00 00 01 00 00 FF')
+
+        expect:
+        result ==
+                '02 - тип GetResponse GRE[2]\n' +
+                'C1 - тип GetResponseNormal GREN[193]\n' +
+                '00 - признак последнего блока (LastBlock flag)\n' +
+                '00000002 - номер блока данных (BlockNumber) - 2\n' +
+                '00 - значение диагностики источника результата (0x00 - success)\n' +
+                '0F - длина блока данных в байтах (DataBlockLength) - 15\n' +
+                '02 - тип данных (ItemType) - STRUCTURE (DataType[2])\n' +
+                '04 - длина элемента данных в байтах (ItemLength) - 4\n' +
+                '12 - тип данных (ItemType) - LONG_UNSIGNED (DataType[18])\n' +
+                '0008 - значение элемента данных (ItemValue)\n' +
+                '11 - тип данных (ItemType) - UNSIGNED (DataType[17])\n' +
+                '00 - значение элемента данных (ItemValue)\n' +
+                '09 - тип данных (ItemType) - OCTET_STRING (DataType[9])\n' +
+                '06 - длина элемента данных в байтах (ItemLength) - 6\n' +
+                '0000010000FF - значение элемента данных (ItemValue) - идентификатор объекта (OBIS код) - 0.0.1.0.0.255'
+    }
+
+    def "should parse multi elements GetResponseWithDatablock with ripped end element"() {
+        // GET_RESPONSE with next following block flag, few GetResponseElement frames and ripped end element
+        given:
+        def result =  frame.parse('02 C1 00 00 00 00 01 00 65 01 4D 02 04 12 00 03 09 06 01 00 01 08 00 FF 0F 02 12 00 00 02 04 12 00 03 09 06 01 00 01 08 01 FF 0F 02 12 00 00 02 04 12 00 03 09 06 01 00 01 08 02 FF 0F 02 12 00 00 02 04 12 00 03 09 06 01 00 01 08 03 FF 0F 02 12 00 00 02 04 12 00 03 09 06 01 00 01 08 04 FF 0F 02 12 00 00 02 04 12 00 03 09 06 01 00')
 
         expect:
         result ==

@@ -7,11 +7,47 @@
     <Types Quantity="7">
         <Type ID="1" Name="Array"></Type>
         <Type ID="2" Name="Structure"></Type>
-        <Type ID="6" Name="Unsigned32" Size="4"></Type>
+        <Type ID="3" Name="Boolean" Size="1"></Type>
+        <Type ID="4" Name="BitString"></Type>
+        <Type ID="5" Name="DoubleLong" Size="4"></Type>
+        <Type ID="6" Name="DoubleLongUnsigned" Size="4"></Type>
         <Type ID="9" Name="OctetString"></Type>
-        <Type ID="15" Name="Integer8" Size="1"></Type>
-        <Type ID="18" Name="Unsigned16" Size="2"></Type>
-        <Type ID="34" Name="Enum" Size="1"></Type>
+        <Type ID="10" Name="VisibleString"></Type>
+        <Type ID="12" Name="UTF8String"></Type>
+        <Type ID="13" Name="BCD"></Type>
+        <Type ID="15" Name="Integer" Size="1"></Type>
+        <Type ID="16" Name="Long" Size="2"></Type>
+        <Type ID="17" Name="Unsigned" Size="1"></Type>
+        <Type ID="18" Name="LongUnsigned" Size="2"></Type>
+        <Type ID="19" Name="CompactArray"></Type>
+        <Type ID="20" Name="Long64" Size="8"></Type>
+        <Type ID="21" Name="Long64Unsigned" Size="8"></Type>
+        <Type ID="22" Name="Enum" Size="1"></Type>
+        <Type ID="23" Name="Float32">
+            <Elements Quantity="1">
+                <Element ID="1" Name="float_32" Type="9" Size="4"></Element>
+            </Elements>
+        </Type>
+        <Type ID="24" Name="Float64">
+            <Elements Quantity="1">
+                <Element ID="1" Name="float_64" Type="9" Size="8"></Element>
+            </Elements>
+        </Type>
+        <Type ID="25" Name="DateTime">
+            <Elements Quantity="1">
+                <Element ID="1" Name="date_time" Type="9" Size="12"></Element>
+            </Elements>
+        </Type>
+        <Type ID="26" Name="Date" Size="1">
+            <Elements Quantity="1">
+                <Element ID="1" Name="date" Type="9" Size="5"></Element>
+            </Elements>
+        </Type>
+        <Type ID="27" Name="Time" Size="1">
+            <Elements Quantity="1">
+                <Element ID="1" Name="time" Type="9" Size="4"></Element>
+            </Elements>
+        </Type>
         <Type ID="50" Name="LoadProfileObjects">
             <Elements Quantity="6">
                 <Element ID="1" Name="captured_object_list" Type="1" Size="8"></Element>
@@ -26,21 +62,30 @@
             <Elements Quantity="10">
                 <Element ID="1" Name="load_profile_record_list" Type="1"></Element>
                 <Element ID="2" Name="load_profile_record" Type="2" Size="8"></Element>
-                <Element ID="3" Name="timestamp" Type="9" Size="12"></Element>
-                <Element ID="4" Name="status" Type="9" Size="3"></Element>
-                <Element ID="5" Name="average_power_+P" Type="6"></Element>
-                <Element ID="6" Name="average_power_-P" Type="6"></Element>
-                <Element ID="7" Name="average_power_Q1" Type="6"></Element>
-                <Element ID="8" Name="average_power_Q2" Type="6"></Element>
-                <Element ID="9" Name="average_power_Q3" Type="6"></Element>
-                <Element ID="10" Name="average_power_Q4" Type="6"></Element>
+                <Element ID="3" Name="timestamp" Type="9" Size="12" LN="0.0.1.0.0.255" Index="2"></Element>
+                <Element ID="4" Name="status" Type="9" Size="3" LN="1.0.96.62.1.255" Index="2"></Element>
+                <Element ID="5" Name="average_power_+P" Type="6" LN="1.0.1.5.0.255" Index="2"></Element>
+                <Element ID="6" Name="average_power_-P" Type="6" LN="1.0.2.5.0.255" Index="2"></Element>
+                <Element ID="7" Name="average_power_Q1" Type="6" LN="1.0.5.5.0.255" Index="2"></Element>
+                <Element ID="8" Name="average_power_Q2" Type="6" LN="1.0.6.5.0.255" Index="2"></Element>
+                <Element ID="9" Name="average_power_Q3" Type="6" LN="1.0.7.5.0.255" Index="2"></Element>
+                <Element ID="10" Name="average_power_Q4" Type="6" LN="1.0.8.5.0.255" Index="2"></Element>
             </Elements>
         </Type>
         <Type ID="52" Name="ScalerUnitType">
             <Elements Quantity="3">
                 <Element ID="1" Name="scaler_unit" Type="2"></Element>
                 <Element ID="2" Name="scaler" Type="15"></Element>
-                <Element ID="3" Name="unit" Type="34"></Element>
+                <Element ID="3" Name="unit" Type="22"></Element>
+            </Elements>
+        </Type>
+        <Type ID="53" Name="CurrentValuesShot">
+            <Elements Quantity="5">
+                <Element ID="1" LN="0.0.1.0.0.255" Index="2"></Element>
+                <Element ID="2" LN="1.0.11.7.0.255" Index="2"></Element>
+                <Element ID="3" LN="1.0.12.7.0.255" Index="2"></Element>
+                <Element ID="4" LN="1.0.14.7.0.255" Index="2"></Element>
+                <Element ID="5" LN="1.0.1.7.0.255" Index="2"></Element>
             </Elements>
         </Type>
     </Types>
@@ -106,6 +151,49 @@
             </Attributes>
             <Methods Quantity="1">
                 <Method Index="1" Description="reset (data)" Type="Void" Status="Mandatory" SN="7AA8"></Method>
+            </Methods>
+        </Object>
+        <Object Description="Current – Iph (Ток фазы)" IC="3" Version="0">
+            <Attributes Quantity="3">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6">1.0.11.7.0.255
+                </Attribute>
+                <Attribute Index="2" Description="value" Type="Date"></Attribute>
+                <Attribute Index="3" Description="scaler_unit" Type="ScalerUnitType">{-2,33}</Attribute>
+            </Attributes>
+            <Methods Quantity="1">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Optional" SN=""></Method>
+            </Methods>
+        </Object>
+        <Object Description="Voltage - V (Напряжение фазы)" IC="3" Version="0">
+            <Attributes Quantity="3">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6">1.0.12.7.0.255
+                </Attribute>
+                <Attribute Index="2" Description="value" Type="Date"></Attribute>
+                <Attribute Index="3" Description="scaler_unit" Type="ScalerUnitType">{-2,35}</Attribute>
+            </Attributes>
+            <Methods Quantity="1">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Optional" SN=""></Method>
+            </Methods>
+        </Object>
+        <Object Description="Frequency (Частота сети)" IC="3" Version="0">
+            <Attributes Quantity="3">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6">1.0.14.7.0.255
+                </Attribute>
+                <Attribute Index="2" Description="value" Type="Date"></Attribute>
+                <Attribute Index="3" Description="scaler_unit" Type="ScalerUnitType">{-2,44}</Attribute>
+            </Attributes>
+            <Methods Quantity="1">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Optional" SN=""></Method>
+            </Methods>
+        </Object>
+        <Object Description="Signed Active Power (+Import; -Export) (Активная мощность)" IC="3" Version="0">
+            <Attributes Quantity="3">
+                <Attribute Index="1" Description="logical_name" Type="Octet-string" Length="6">1.0.1.7.0.255</Attribute>
+                <Attribute Index="2" Description="value" Type="Date"></Attribute>
+                <Attribute Index="3" Description="scaler_unit" Type="ScalerUnitType">{-2,27}</Attribute>
+            </Attributes>
+            <Methods Quantity="1">
+                <Method Index="1" Description="reset (data)" Type="Void" Status="Optional" SN=""></Method>
             </Methods>
         </Object>
     </Objects>
